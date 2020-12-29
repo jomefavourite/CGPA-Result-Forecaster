@@ -18,18 +18,20 @@ addInput.addEventListener("click", addNewInput);
 calculate.addEventListener("click", () => {
   const creditUnits = callAll("#creditUnit");
 
-  console.log(creditUnits);
+  let arr = [];
 
-  function getSelectedOption(sel) {
-    var opt;
-    for (var i = 0, len = sel.options.length; i < len; i++) {
-      opt = sel.options[i];
-      if (opt.selected === true) {
-        break;
-      }
-    }
-    return opt;
-  }
+  creditUnits.forEach(creditUnit => {
+    console.log(arr.push(creditUnit.value));
+    console.log(arr);
+  });
+
+  let sum = arr.reduce((a, b) => {
+    return Number(a) + Number(b);
+  });
+
+  let totallUnit = call("#totalUnit");
+
+  totallUnit.innerHTML = sum;
 });
 
 function addNewInput() {
