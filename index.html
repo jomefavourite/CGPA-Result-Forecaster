@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Result Calculator</title>
+  </head>
+  <body>
+    <main>
+      <h1>Result Calculator</h1>
+
+      <section>
+        <form>
+          <table class="table" id="table">
+            <thead class="table__head">
+              <tr>
+                <th>Course Code</th>
+                <th>Credit Unit</th>
+                <th>Grade</th>
+              </tr>
+            </thead>
+            <tbody class="table__body" id="tbody">
+              <tr>
+                <td><input type="text" name="courseCode" id="courseCode" /></td>
+                <td>
+                  <select name="creditUnit">
+                    <option value="6">6</option>
+                    <option value="5">5</option>
+                    <option value="4">4</option>
+                    <option value="3">3</option>
+                    <option value="2">2</option>
+                    <option value="1">1</option>
+                    <option value="0" selected>0</option>
+                  </select>
+                </td>
+                <td>
+                  <select name="grade">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="F">F</option>
+                  </select>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </form>
+      </section>
+
+      <section>
+        <button id="add">Add</button>
+        <button id="calculate">Calculate</button>
+      </section>
+
+      <section>
+        <div>
+          <h3>Total Unit</h3>
+          <p>0</p>
+        </div>
+        <div>
+          <h3>GPA</h3>
+          <p>0</p>
+        </div>
+        <div>
+          <h3>CGPA</h3>
+          <p>0</p>
+        </div>
+      </section>
+    </main>
+
+    <script src="main.js"></script>
+  </body>
+</html>
