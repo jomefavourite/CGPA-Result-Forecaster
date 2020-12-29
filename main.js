@@ -8,14 +8,14 @@ function callAll(name) {
   return document.querySelectorAll(name);
 }
 
-const addInput = call("#add");
-const calculate = call("#calculate");
+const addInputBtn = call("#add");
+const calculateBtn = call("#calculate");
 
 // Credit Points
 // Grade point * Credit Unit
 
-addInput.addEventListener("click", addNewInput);
-calculate.addEventListener("click", () => {
+addInputBtn.addEventListener("click", addNewInput);
+calculateBtn.addEventListener("click", () => {
   const creditUnits = callAll("#creditUnit");
 
   let arr = [];
@@ -36,19 +36,28 @@ calculate.addEventListener("click", () => {
 
 function addNewInput() {
   const tbody = call("#tbody");
-  tbody.innerHTML += `
-    <tr>
-      <td>
-        <input type="text" name="courseCode" id="courseCode" />
-      </td>
-      <td>
-        <input type="text" name="creditUnit" id="creditUnit" />
-      </td>
-      <td>
-        <input type="text" name="grade" id="grade" />
-      </td>
-    </tr>
-  `;
+  const addInput = call("#numAdd").value;
+
+  console.log(addInput);
+
+  function addRow(num) {
+    let str = `
+      <tr>
+        <td>
+          <input type="text" name="courseCode" id="courseCode" />
+        </td>
+        <td>
+          <input type="text" name="creditUnit" id="creditUnit" />
+        </td>
+        <td>
+          <input type="text" name="grade" id="grade" />
+        </td>
+      </tr>
+    `;
+    return str.repeat(num);
+  }
+
+  tbody.innerHTML = addRow(addInput);
 }
 
 function gradeToPoints(grade) {

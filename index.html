@@ -4,16 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Result Calculator</title>
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <main>
+    <main class="container">
       <h1>Result Calculator</h1>
 
       <div>
-        <button id="addNewSection">+</button>
+        <!-- <button id="addNewSection">+</button> -->
 
-        <section>
-          <h2>1st Semester</h2>
+        <section class="first__section">
+          <div class="first__section__heading">
+            <h2>1st Semester</h2>
+
+            <div>
+              <label for="numAdd">Enter Number of courses to be added</label>
+              <input type="num" name="numAdd" id="numAdd" placeholder="" />
+            </div>
+          </div>
+
           <form>
             <table class="table" id="table">
               <thead class="table__head">
@@ -46,12 +55,12 @@
           </form>
         </section>
 
-        <section>
+        <section class="second__section">
           <button id="add">Add</button>
           <button id="calculate">Calculate</button>
         </section>
 
-        <section>
+        <section class="third__section">
           <div>
             <h3>Total Unit</h3>
             <p id="totalUnit">0</p>

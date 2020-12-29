@@ -1,0 +1,72 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+  max-width: 1000px;
+}
+
+body {
+  background: rgba(0, 0, 0, 0.39);
+}
+
+main {
+  text-align: center;
+}
+
+section {
+  background: #fff;
+  padding: 1rem;
+}
+
+section + section {
+  margin-top: 1rem;
+}
+
+.first__section__heading {
+  display: flex;
+  justify-content: space-between;
+}
+
+.first__section__heading input {
+  display: block;
+  width: 100%;
+  max-width: 20px;
+}
+
+.first__section .table {
+  width: 100%;
+}
+
+.first__section .table input {
+  width: 100%;
+}
+
+.second__section button {
+  padding: 0.4rem 1.2rem;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.third__section {
+  display: flex;
+  justify-content: center;
+}
+
+.third__section div {
+  display: flex;
+  align-items: center;
+}
+
+.third__section div p {
+  margin-left: 20px;
+}
+
+.third__section div + div {
+  margin-left: 20px;
+}
