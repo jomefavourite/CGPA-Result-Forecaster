@@ -1,19 +1,56 @@
-// To get elements from html dom
+// To get a element from html dom
 function call(name) {
   return document.querySelector(name);
+}
+
+// To get elements from html dom
+function callAll(name) {
+  return document.querySelectorAll(name);
 }
 
 const addInput = call("#add");
 const calculate = call("#calculate");
 
-const creditUnit = call("[name=creditUnit]");
-
-console.log(creditUnit);
-
 // Credit Points
 // Grade point * Credit Unit
 
 addInput.addEventListener("click", addNewInput);
+calculate.addEventListener("click", () => {
+  const creditUnits = callAll("[name=creditUnit]");
+
+  const selects = [];
+
+  creditUnits.forEach(creditUnit => {
+    return selects.push(creditUnit);
+  });
+
+  console.log(selects);
+  console.log(selects[0][0]);
+
+  console.log(creditUnits);
+
+  // let option1 = "";
+  // let option2 = "";
+  // let a = [];
+  // for (let i = 0; i < creditUnit.length; ++i) {
+  //   option1 = creditUnit[i].options[creditUnit[i].selectedIndex].text;
+  //   let totalUnit = document.querySelector("[name = totalUnit]").value;
+  //   totalUnit = Number(totalUnit) + Number(option1);
+  //   a.push(totalUnit);
+  // }
+  // let asum = a.reduce((partial_sum, a) => partial_sum + a, 0);
+
+  // let creditUnitValue = "";
+  // let arrCU = [];
+  // creditUnits.forEach((creditUnit, i) => {
+  //   creditUnitValue = creditUnit.options.innerHTML;
+
+  //   // console.log(creditUnitValue);
+  //   let totalUnit = Number(creditUnitValue);
+
+  //   // console.log(totalUnit);
+  // });
+});
 
 function addNewInput() {
   const tbody = call("#tbody");
