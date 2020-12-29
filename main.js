@@ -10,6 +10,7 @@ function callAll(name) {
 
 const addInputBtn = call("#add");
 const calculateBtn = call("#calculate");
+const addNewSection = call("#addNewSection");
 
 // Credit Points
 // Grade point * Credit Unit
@@ -29,16 +30,16 @@ calculateBtn.addEventListener("click", () => {
     return Number(a) + Number(b);
   });
 
-  let totallUnit = call("#totalUnit");
+  let totalUnit = call("#totalUnit");
 
-  totallUnit.innerHTML = sum;
+  totalUnit.innerHTML = sum;
 });
+
+addNewSection.addEventListener("click", addResultSection);
 
 function addNewInput() {
   const tbody = call("#tbody");
   const addInput = call("#numAdd").value;
-
-  console.log(addInput);
 
   function addRow(num) {
     let str = `
@@ -54,6 +55,8 @@ function addNewInput() {
         </td>
       </tr>
     `;
+
+    if (num === "") return str;
     return str.repeat(num);
   }
 
@@ -74,10 +77,83 @@ function gradeToPoints(grade) {
     case "D":
       return 2;
       break;
+    case "E":
+      return 1;
+      break;
     case "F":
       return 0;
       break;
     default:
       return undefined;
   }
+}
+
+let outputResult = `
+<section class="first__section">
+            <div class="first__section__heading">
+              <h2>Semester</h2>
+  
+              <div>
+                <label for="numAdd">Enter Number of courses to be added</label>
+                <input type="num" name="numAdd" id="numAdd" value="6" />
+              </div>
+            </div>
+  
+            <form>
+              <table class="table" id="table">
+                <thead class="table__head">
+                  <tr>
+                    <th>Course Code</th>
+                    <th>Credit Unit</th>
+                    <th>Grade</th>
+                  </tr>
+                </thead>
+                <tbody class="table__body" id="tbody">
+                  <tr>
+                    <td>
+                      <input type="text" name="courseCode" id="courseCode" />
+                    </td>
+                    <td>
+                      <input type="text" name="creditUnit" id="creditUnit" />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        name="grade"
+                        id="grade"
+                        max-length="1"
+                        pattern="[A]"
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </form>
+          </section>
+  
+          <section class="second__section">
+            <button id="add">Add</button>
+            <button id="calculate">Calculate</button>
+          </section>
+  
+          <section class="third__section">
+            <div>
+              <h3>Total Unit</h3>
+              <p id="totalUnit">0</p>
+            </div>
+            <div>
+              <h3>GPA</h3>
+              <p>0</p>
+            </div>
+            <div>
+              <h3>CGPA</h3>
+              <p>0</p>
+            </div>
+          </section>
+`;
+
+function addResultSection() {
+  let output = call(".overall-output");
+
+  output.innerHTML += outputResult;
 }
