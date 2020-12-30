@@ -12,9 +12,73 @@
 
       <div class="overall-output">
         <div>
-          <button id="addNewSection">+</button>
+          <input type="text" name="addNewSecInp" id="addNewSecInp" />
+          <button id="addNewSecBtn">+</button>
 
           <section class="first__section">
+            <div class="first__section__heading">
+              <h2>Semester</h2>
+
+              <div>
+                <label for="numAdd">Enter Number of courses to be added</label>
+                <input type="num" name="numAdd" id="numAdd" value="6" />
+              </div>
+            </div>
+
+            <form>
+              <table class="table" id="table">
+                <thead class="table__head">
+                  <tr>
+                    <th>Course Code</th>
+                    <th>Credit Unit</th>
+                    <th>Grade</th>
+                  </tr>
+                </thead>
+                <tbody class="table__body" id="tbody">
+                  <tr>
+                    <td>
+                      <input type="text" name="courseCode" id="courseCode" />
+                    </td>
+                    <td>
+                      <input type="text" name="creditUnit" id="creditUnit" />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        name="grade"
+                        id="grade"
+                        max-length="1"
+                        pattern="[A]"
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </form>
+          </section>
+
+          <section class="second__section">
+            <button id="add">Add</button>
+            <button id="calculate">Calculate</button>
+          </section>
+
+          <section class="third__section">
+            <div>
+              <h3>Total Unit</h3>
+              <p id="totalUnit">0</p>
+            </div>
+            <div>
+              <h3>GPA</h3>
+              <p id="gpaScore">0</p>
+            </div>
+            <div>
+              <h3>CGPA</h3>
+              <p>0</p>
+            </div>
+          </section>
+
+          <!-- Second Section -->
+          <!-- <section class="first__section">
             <div class="first__section__heading">
               <h2>Semester</h2>
 
@@ -74,7 +138,7 @@
               <h3>CGPA</h3>
               <p>0</p>
             </div>
-          </section>
+          </section> -->
         </div>
       </div>
     </main>

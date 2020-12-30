@@ -10,32 +10,45 @@ function callAll(name) {
 
 const addInputBtn = call("#add");
 const calculateBtn = call("#calculate");
-const addNewSection = call("#addNewSection");
+const addNewSecBtn = call("#addNewSecBtn");
+const addNewSecInp = call("#addNewSecInp");
 
 // Credit Points
 // Grade point * Credit Unit
 
 addInputBtn.addEventListener("click", addNewInput);
-calculateBtn.addEventListener("click", () => {
-  const creditUnits = callAll("#creditUnit");
+calculateBtn.addEventListener("click", gpaResult);
 
-  let arr = [];
+addNewSecBtn.addEventListener("click", addResultSection);
+
+function gpaResult() {
+  const creditUnits = callAll("#creditUnit");
+  const grades = callAll("#grade");
+  let totalUnit = call("#totalUnit");
+  let gpaValue = call("#gpaScore");
+
+  let arrCredit = [];
+  let arrGrade = [];
 
   creditUnits.forEach(creditUnit => {
-    console.log(arr.push(creditUnit.value));
-    console.log(arr);
+    arrCredit.push(Number(creditUnit.value));
   });
 
-  let sum = arr.reduce((a, b) => {
-    return Number(a) + Number(b);
+  grades.forEach(grade => {
+    arrGrade.push(gradeToPoints(grade.value));
   });
 
-  let totalUnit = call("#totalUnit");
+  let sumCredit = arrCredit.reduce((a, b) => {
+    return a + b;
+  });
 
-  totalUnit.innerHTML = sum;
-});
+  let sumGPA = arrGrade.reduce(function (r, a, i) {
+    return r + a * arrCredit[i];
+  }, 0);
 
-addNewSection.addEventListener("click", addResultSection);
+  totalUnit.innerHTML = sumCredit;
+  gpaValue.innerHTML = (sumGPA / sumCredit).toFixed(2);
+}
 
 function addNewInput() {
   const tbody = call("#tbody");
@@ -88,72 +101,79 @@ function gradeToPoints(grade) {
   }
 }
 
-let outputResult = `
-<section class="first__section">
-            <div class="first__section__heading">
-              <h2>Semester</h2>
-  
-              <div>
-                <label for="numAdd">Enter Number of courses to be added</label>
-                <input type="num" name="numAdd" id="numAdd" value="6" />
-              </div>
-            </div>
-  
-            <form>
-              <table class="table" id="table">
-                <thead class="table__head">
-                  <tr>
-                    <th>Course Code</th>
-                    <th>Credit Unit</th>
-                    <th>Grade</th>
-                  </tr>
-                </thead>
-                <tbody class="table__body" id="tbody">
-                  <tr>
-                    <td>
-                      <input type="text" name="courseCode" id="courseCode" />
-                    </td>
-                    <td>
-                      <input type="text" name="creditUnit" id="creditUnit" />
-                    </td>
-                    <td>
-                      <input
-                        type="text"
-                        name="grade"
-                        id="grade"
-                        max-length="1"
-                        pattern="[A]"
-                      />
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </form>
-          </section>
-  
-          <section class="second__section">
-            <button id="add">Add</button>
-            <button id="calculate">Calculate</button>
-          </section>
-  
-          <section class="third__section">
-            <div>
-              <h3>Total Unit</h3>
-              <p id="totalUnit">0</p>
-            </div>
-            <div>
-              <h3>GPA</h3>
-              <p>0</p>
-            </div>
-            <div>
-              <h3>CGPA</h3>
-              <p>0</p>
-            </div>
-          </section>
-`;
+// let outputResult = `
+// <section class="first__section">
+//             <div class="first__section__heading">
+//               <h2>Semester</h2>
+
+//               <div>
+//                 <label for="numAdd">Enter Number of courses to be added</label>
+//                 <input type="num" name="numAdd" id="numAdd1" value="6" />
+//               </div>
+//             </div>
+
+//             <form>
+//               <table class="table" id="table1">
+//                 <thead class="table__head">
+//                   <tr>
+//                     <th>Course Code</th>
+//                     <th>Credit Unit</th>
+//                     <th>Grade</th>
+//                   </tr>
+//                 </thead>
+//                 <tbody class="table__body" id="tbody1">
+//                   <tr>
+//                     <td>
+//                       <input type="text" name="courseCode" id="courseCode1" />
+//                     </td>
+//                     <td>
+//                       <input type="text" name="creditUnit" id="creditUnit1" />
+//                     </td>
+//                     <td>
+//                       <input
+//                         type="text"
+//                         name="grade"
+//                         id="grade"
+//                         max-length="1"
+//                         pattern="[A]"
+//                       />
+//                     </td>
+//                   </tr>
+//                 </tbody>
+//               </table>
+//             </form>
+//           </section>
+
+//           <section class="second__section">
+//             <button id="add1">Add</button>
+//             <button id="calculate1">Calculate</button>
+//           </section>
+
+//           <section class="third__section">
+//             <div>
+//               <h3>Total Unit</h3>
+//               <p id="totalUnit1">0</p>
+//             </div>
+//             <div>
+//               <h3>GPA</h3>
+//               <p>0</p>
+//             </div>
+//             <div>
+//               <h3>CGPA</h3>
+//               <p>0</p>
+//             </div>
+//           </section>
+// `;
+
+let outputResult = `<h1>Hello</h1>`;
 
 function addResultSection() {
+  let addNewSecInp = call("#addNewSecInp").value;
   let output = call(".overall-output");
 
-  output.innerHTML += outputResult;
+  function createSection(num) {
+    return outputResult.repeat(num);
+  }
+
+  output.innerHTML += createSection(addNewSecInp);
 }
