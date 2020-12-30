@@ -27,6 +27,14 @@ section + section {
   margin-top: 1rem;
 }
 
+.error {
+  display: none;
+  padding: 0.5rem;
+  background: red;
+  color: #fff;
+  margin: 0.5rem 0;
+}
+
 .first__section__heading {
   display: flex;
   justify-content: space-between;

@@ -12,8 +12,12 @@
 
       <div class="overall-output">
         <div>
-          <input type="text" name="addNewSecInp" id="addNewSecInp" />
-          <button id="addNewSecBtn">+</button>
+          <input type="text" name="addNewSecInp" class="addNewSecInp" />
+          <button class="addNewSecBtn">+</button>
+
+          <div class="error">
+            <p>Please fill all input field</p>
+          </div>
 
           <section class="first__section">
             <div class="first__section__heading">
@@ -21,12 +25,12 @@
 
               <div>
                 <label for="numAdd">Enter Number of courses to be added</label>
-                <input type="num" name="numAdd" id="numAdd" value="6" />
+                <input type="num" name="numAdd" class="numAdd" value="6" />
               </div>
             </div>
 
             <form>
-              <table class="table" id="table">
+              <table class="table table">
                 <thead class="table__head">
                   <tr>
                     <th>Course Code</th>
@@ -34,22 +38,31 @@
                     <th>Grade</th>
                   </tr>
                 </thead>
-                <tbody class="table__body" id="tbody">
+                <tbody class="table__body tbody">
                   <tr>
                     <td>
-                      <input type="text" name="courseCode" id="courseCode" />
+                      <input type="text" name="courseCode" class="courseCode" />
                     </td>
                     <td>
-                      <input type="text" name="creditUnit" id="creditUnit" />
+                      <input type="text" name="creditUnit" class="creditUnit" />
                     </td>
                     <td>
                       <input
                         type="text"
                         name="grade"
+                        list="grades"
                         id="grade"
                         max-length="1"
                         pattern="[A]"
                       />
+                      <datalist id="grades">
+                        <option value="A"></option>
+                        <option value="B"></option>
+                        <option value="C"></option>
+                        <option value="D"></option>
+                        <option value="E"></option>
+                        <option value="F"></option>
+                      </datalist>
                     </td>
                   </tr>
                 </tbody>
@@ -58,87 +71,24 @@
           </section>
 
           <section class="second__section">
-            <button id="add">Add</button>
-            <button id="calculate">Calculate</button>
+            <button class="add">Add</button>
+            <button class="calculate">Calculate</button>
           </section>
 
           <section class="third__section">
             <div>
               <h3>Total Unit</h3>
-              <p id="totalUnit">0</p>
+              <p class="totalUnit">0</p>
             </div>
             <div>
               <h3>GPA</h3>
-              <p id="gpaScore">0</p>
+              <p class="gpaScore">0</p>
             </div>
             <div>
               <h3>CGPA</h3>
               <p>0</p>
             </div>
           </section>
-
-          <!-- Second Section -->
-          <!-- <section class="first__section">
-            <div class="first__section__heading">
-              <h2>Semester</h2>
-
-              <div>
-                <label for="numAdd">Enter Number of courses to be added</label>
-                <input type="num" name="numAdd" id="numAdd" value="6" />
-              </div>
-            </div>
-
-            <form>
-              <table class="table" id="table">
-                <thead class="table__head">
-                  <tr>
-                    <th>Course Code</th>
-                    <th>Credit Unit</th>
-                    <th>Grade</th>
-                  </tr>
-                </thead>
-                <tbody class="table__body" id="tbody">
-                  <tr>
-                    <td>
-                      <input type="text" name="courseCode" id="courseCode" />
-                    </td>
-                    <td>
-                      <input type="text" name="creditUnit" id="creditUnit" />
-                    </td>
-                    <td>
-                      <input
-                        type="text"
-                        name="grade"
-                        id="grade"
-                        max-length="1"
-                        pattern="[A]"
-                      />
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </form>
-          </section>
-
-          <section class="second__section">
-            <button id="add">Add</button>
-            <button id="calculate">Calculate</button>
-          </section>
-
-          <section class="third__section">
-            <div>
-              <h3>Total Unit</h3>
-              <p id="totalUnit">0</p>
-            </div>
-            <div>
-              <h3>GPA</h3>
-              <p>0</p>
-            </div>
-            <div>
-              <h3>CGPA</h3>
-              <p>0</p>
-            </div>
-          </section> -->
         </div>
       </div>
     </main>
