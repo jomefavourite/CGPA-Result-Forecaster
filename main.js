@@ -8,17 +8,20 @@ function callAll(name) {
   return document.querySelectorAll(name);
 }
 
+// Selecting various elements from the DOM
 const addInputBtn = call(".add");
 const calculateBtn = call(".calculate");
 const addNewSecBtn = call(".addNewSecBtn");
 const addNewSecInp = call(".addNewSecInp");
 
+// Making Elements have an event listener - click
 addInputBtn.addEventListener("click", addNewInput);
 calculateBtn.addEventListener("click", gpaResult);
-addNewSecBtn.addEventListener("click", addResultSection);
+// addNewSecBtn.addEventListener("click", addResultSection);
 
+// Function to calculate the gpa score
 function gpaResult() {
-  const creditUnits = callAll(".creditUnit");
+  const creditUnits = callAll(".creditUnit"); // Selecting all elements having the class name .creditUnit
   const grades = callAll(".grade");
   let totalUnit = call(".totalUnit");
   let gpaValue = call(".gpaScore");
@@ -27,45 +30,77 @@ function gpaResult() {
   let arrCredit = [];
   let arrGrade = [];
 
+  // Looping through the various credit unit input
+  // and then get each values in each input pushing
+  // those values to an array - arrCredit
   creditUnits.forEach(creditUnit => {
     arrCredit.push(Number(creditUnit.value));
   });
 
+  // Looping through the various grade input
+  // and then invoking a function ( gradeToPoints() )
+  // with the value in the input such as A,B,C (argument passed)
+  // which returns 5,4,3  and then get the returned numbers
+  // which is then pushed to an array - arrGrade
   grades.forEach(grade => {
     arrGrade.push(gradeToPoints(grade.value));
   });
 
+  // From the array - arrCredit, adding all values in the array
   let sumCredit = arrCredit.reduce((a, b) => {
     return a + b;
   });
 
-  let sumGPA = arrGrade.reduce(function (r, a, i) {
+  // From array Grade (arrGrade) and array Credit (arrCredit)
+  // For example arrGrade [5,4,3,2,1] and arrCredit [3,2,1,3,3]
+  // Each index from both arrays are multiplied together and
+  // the added to the next index.
+  // Such as 5 * 3 + 4 * 2 + 3 * 1 + 2 * 3 + 1 * 3
+  // Output is stored as sumGPA
+  let sumGPA = arrGrade.reduce((r, a, i) => {
     return r + a * arrCredit[i];
   }, 0);
 
+  // totalUnit has the total summed credit
   totalUnit.innerHTML = sumCredit;
+
+  // gpaValue has the value (sumGPA / sumCredit).toFixed(2)
+  // ( sumGPA / sumCredit ) does the calculation
+  // toFixed(2) rounds it to two decimal point
+  //
+  // A condition to detect if value is NaN, if true disErr() is invoked else return the value without NaN
+  // (sumGPA / sumCredit).toFixed(2) === "NaN" ? disErr() : (sumGPA / sumCredit).toFixed(2);
   gpaValue.innerHTML =
     (sumGPA / sumCredit).toFixed(2) === "NaN"
       ? disErr()
       : (sumGPA / sumCredit).toFixed(2);
 
+  // display Error Function is to tell the user
+  // that he/she hasn't filled all inputs
+  // whereby display an error
   function disErr() {
+    // Error displays immediately
     setTimeout(() => {
       error.style.display = "block";
     }, 0);
 
+    // at 5s error message disappears
     setTimeout(() => {
       error.style.display = "none";
     }, 5000);
 
+    // When the function is called it should
+    // return 0 if there's an error
     return 0;
   }
 }
 
+// Function to add new inputs to the pa
 function addNewInput() {
-  const tbody = call(".tbody");
-  const addInput = call(".numAdd").value;
+  const tbody = call(".tbody"); // selecting the table body
+  const addInput = call(".numAdd").value; // indicating the number of rows to be added
 
+  // A function to add rows which takes a parameter
   function addRow(num) {
     let str = `
       <tr>
@@ -76,18 +111,33 @@ function addNewInput() {
           <input type="text" name="creditUnit" class="creditUnit" />
         </td>
         <td>
-          <input type="text" name="grade" class="grade" />
+          <input type="text" name="grade" list="grades" class="grade" />
+            <datalist id="grades">
+              <option value="A"></option>
+              <option value="B"></option>
+              <option value="C"></option>
+              <option value="D"></option>
+              <option value="E"></option>
+              <option value="F"></option>
+            /datalist>
         </td>
       </tr>
     `;
 
+    // If the parameter is null or there's nothing ""
+    // the process should just return the str variable
     if (num === "") return str;
+
+    // This is to make the str (string) variable repeat
+    // at a certain amount of time based on the argument passed
     return str.repeat(num);
   }
 
+  // Function invoked
   tbody.innerHTML = addRow(addInput);
 }
 
+// Grade value to points
 function gradeToPoints(grade) {
   switch (grade) {
     case "A":
@@ -113,17 +163,17 @@ function gradeToPoints(grade) {
   }
 }
 
-let outputResult = document.createElement("h1");
-outputResult.innerHTML = "hello";
+// let outputResult = document.createElement("h1");
+// outputResult.innerHTML = "hello";
 
-function addResultSection() {
-  let addNewSecInp = call(".addNewSecInp").value;
-  let output = call(".overall-output");
+// function addResultSection() {
+//   let addNewSecInp = call(".addNewSecInp").value;
+//   let output = call(".overall-output");
 
-  function createSection(num) {
-    // return outputResult.repeat(num);
-    return (outputResult.innerHTML = "hello");
-  }
+//   function createSection(num) {
+//     // return outputResult.repeat(num);
+//     return (outputResult.innerHTML = "hello");
+//   }
 
-  output.innerHTML += createSection(addNewSecInp);
-}
+//   output.innerHTML += createSection(addNewSecInp);
+// }
