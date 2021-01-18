@@ -5,14 +5,69 @@
 }
 
 .container {
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
-  max-width: 1000px;
+  /* max-width: 1000px; */
 }
 
 body {
-  background: rgba(0, 0, 0, 0.39);
+   background-color: #cc5577;
+background-image: url(/images/Radiant-Gradient.svg);
+background-attachment: fixed;
+background-size: cover;
+color: rgb(29, 28, 28);
 }
+.header {
+  height: 200px;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ background: url(/images/Scattered-Forcefields.svg);
+  margin-bottom: 10px;
+}
+.header h1 {
+  font-size: 6vw;
+  background: url(/images/clay-banks-VppPygAZKU0-unsplash.jpg);
+  background-size: cover;
+  background-position: center;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: rgba(0, 0,0, .2);
+}
+.overall-output {
+  position: relative;
+  top: 210px;
+  width: 90%;
+}
+.overall-output div {
+  margin-left: 10%;
+}
+
+ input[type=text], [type=num]{
+  padding: 2px;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid rgb(158, 157, 157);
+}
+label {
+  opacity: .8;
+  font-style: italic;
+}
+.semester {
+  font-size: 40px;
+  color: #cc5577;
+}
+hr {
+  opacity: .4;
+  margin-bottom: 20px;
+}
+
 
 main {
   text-align: center;
@@ -21,6 +76,7 @@ main {
 section {
   background: #fff;
   padding: 1rem;
+  border-radius: 10px;
 }
 
 section + section {
@@ -63,6 +119,13 @@ button {
   border-radius: 20px;
   border: none;
   cursor: pointer;
+  outline: firebrick;
+ background: rgb(230, 175, 143);
+ font-weight: bold;
+ color: rgb(19, 18, 18);
+}
+button:hover{
+  opacity: .9;
 }
 
 .third__section {
@@ -89,4 +152,19 @@ button {
 
 .display_result {
   display: none;
+}
+
+@media screen and  (max-width: 700px) {
+  body {
+    overflow-x: hidden;
+  }
+  header h1 {
+    font-size: 150px;
+  }
+  .overall-output div {
+    width: 95%;
+  }
+  label {
+    font-size: 14px;
+  }
 }
