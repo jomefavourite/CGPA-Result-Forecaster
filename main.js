@@ -32,6 +32,10 @@ yesBtn.addEventListener("click", () => {
   let totalUnit = call(".totalUnit");
   let gpaValue = call(".gpaScore");
   const semester = call(".semester");
+  const addInput = call(".numAdd");
+
+  addInput.focus();
+  addInput.select();
 
   grades.forEach(grade => {
     grade.value = "";
