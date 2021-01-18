@@ -11,11 +11,11 @@
 }
 
 body {
-   background-color: #cc5577;
-background-image: url(/images/Radiant-Gradient.svg);
-background-attachment: fixed;
-background-size: cover;
-color: rgb(29, 28, 28);
+  background-color: #cc5577;
+  background-image: url(/images/Radiant-Gradient.svg);
+  background-attachment: fixed;
+  background-size: cover;
+  color: rgb(29, 28, 28);
 }
 .header {
   height: 200px;
@@ -28,7 +28,7 @@ color: rgb(29, 28, 28);
   display: flex;
   align-items: center;
   justify-content: center;
- background: url(/images/Scattered-Forcefields.svg);
+  background: url(/images/Scattered-Forcefields.svg);
   margin-bottom: 10px;
 }
 .header h1 {
@@ -38,7 +38,7 @@ color: rgb(29, 28, 28);
   background-position: center;
   background-clip: text;
   -webkit-background-clip: text;
-  color: rgba(0, 0,0, .2);
+  color: rgba(0, 0, 0, 0.2);
 }
 .overall-output {
   position: relative;
@@ -49,14 +49,15 @@ color: rgb(29, 28, 28);
   margin-left: 10%;
 }
 
- input[type=text], [type=num]{
+input[type="text"],
+[type="num"] {
   padding: 2px;
   outline: none;
   border-radius: 5px;
   border: 1px solid rgb(158, 157, 157);
 }
 label {
-  opacity: .8;
+  opacity: 0.8;
   font-style: italic;
 }
 .semester {
@@ -64,10 +65,9 @@ label {
   color: #cc5577;
 }
 hr {
-  opacity: .4;
+  opacity: 0.4;
   margin-bottom: 20px;
 }
-
 
 main {
   text-align: center;
@@ -120,12 +120,12 @@ button {
   border: none;
   cursor: pointer;
   outline: firebrick;
- background: rgb(230, 175, 143);
- font-weight: bold;
- color: rgb(19, 18, 18);
+  background: rgb(230, 175, 143);
+  font-weight: bold;
+  color: rgb(19, 18, 18);
 }
-button:hover{
-  opacity: .9;
+button:hover {
+  opacity: 0.9;
 }
 
 .third__section {
@@ -154,7 +154,7 @@ button:hover{
   display: none;
 }
 
-@media screen and  (max-width: 700px) {
+@media screen and (max-width: 700px) {
   body {
     overflow-x: hidden;
   }
