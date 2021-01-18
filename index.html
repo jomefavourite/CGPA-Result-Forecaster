@@ -21,11 +21,11 @@
 
           <section class="first__section">
             <div class="first__section__heading">
-              <h2>Semester</h2>
+              <h2><span class="semester">1</span> Section</h2>
 
               <div>
                 <label for="numAdd">Enter Number of courses to be added</label>
-                <input type="num" name="numAdd" class="numAdd" value="6" />
+                <input type="num" name="numAdd" class="numAdd" value="2" />
               </div>
             </div>
 
@@ -44,7 +44,25 @@
                       <input type="text" name="courseCode" class="courseCode" />
                     </td>
                     <td>
-                      <input type="text" name="creditUnit" class="creditUnit" />
+                      <input
+                        type="num"
+                        name="creditUnit"
+                        list="creditUnit"
+                        class="creditUnit"
+                      />
+                      <datalist id="creditUnit">
+                        <option value="0"></option>
+                        <option value="1"></option>
+                        <option value="2"></option>
+                        <option value="3"></option>
+                        <option value="4"></option>
+                        <option value="5"></option>
+                        <option value="6"></option>
+                        <option value="7"></option>
+                        <option value="8"></option>
+                        <option value="9"></option>
+                        <option value="10"></option>
+                      </datalist>
                     </td>
                     <td>
                       <input
@@ -86,15 +104,17 @@
             </div>
             <div>
               <h3>CGPA</h3>
-              <p>0</p>
+              <p class="cgpaScore">0</p>
             </div>
           </section>
 
-          <section>
+          <section class="resultContinue result__continue">
             <h3>Would you like to calculate for another Semester?</h3>
-            <button>No</button>
-            <button>Yes</button>
+            <button class="yesBtn">Yes</button>
+            <button class="noBtn">No</button>
           </section>
+
+          <section class="displayResult display_result"></section>
         </div>
       </div>
     </main>

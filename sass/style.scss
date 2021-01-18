@@ -56,14 +56,14 @@ section + section {
   }
 }
 
-.second__section {
-  button {
-    padding: 0.4rem 1.2rem;
-    border-radius: 20px;
-    border: none;
-    cursor: pointer;
-  }
+button {
+  padding: 0.4rem 1.2rem;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
 }
+// .second__section {
+// }
 
 .third__section {
   display: flex;
@@ -81,4 +81,12 @@ section + section {
   div + div {
     margin-left: 20px;
   }
+}
+
+.result__continue {
+  display: none;
+}
+
+.display_result {
+  display: none;
 }

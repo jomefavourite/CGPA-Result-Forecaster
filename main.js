@@ -8,16 +8,57 @@ function callAll(name) {
   return document.querySelectorAll(name);
 }
 
+// let name = prompt("Enter your name");
+// let years = prompt("How long is your program?");
+
 // Selecting various elements from the DOM
 const addInputBtn = call(".add");
 const calculateBtn = call(".calculate");
 const addNewSecBtn = call(".addNewSecBtn");
 const addNewSecInp = call(".addNewSecInp");
+const yesBtn = call(".yesBtn");
+const noBtn = call(".noBtn");
 
 // Making Elements have an event listener - click
 addInputBtn.addEventListener("click", addNewInput);
 calculateBtn.addEventListener("click", gpaResult);
-// addNewSecBtn.addEventListener("click", addResultSection);
+document.addEventListener("keydown", e => {
+  if (e.key === "Enter") addNewInput();
+});
+yesBtn.addEventListener("click", () => {
+  const creditUnits = callAll(".creditUnit"); // Selecting all elements having the class name .creditUnit
+  const grades = callAll(".grade");
+  const courseCodeInputs = callAll(".courseCode");
+  let totalUnit = call(".totalUnit");
+  let gpaValue = call(".gpaScore");
+  const semester = call(".semester");
+
+  grades.forEach(grade => {
+    grade.value = "";
+  });
+  creditUnits.forEach(creditUnit => {
+    creditUnit.value = "";
+  });
+  courseCodeInputs.forEach(courseCodeInput => {
+    courseCodeInput.value = "";
+  });
+  totalUnit.innerHTML = 0;
+  gpaValue.innerHTML = 0;
+
+  semester.innerHTML = count++;
+});
+
+var count = 2;
+
+noBtn.addEventListener("click", () => {
+  let displayResult = call(".displayResult");
+  let content = `<h3>${name} you're on a ${years} years program</h3>
+     <p>${cgpaCal()} is your current CGPA score</p>
+     <p>You'll need **** as an average for each semester to come, good luck</p>`;
+
+  displayResult.style.display = "block";
+  displayResult.innerHTML = content;
+});
 
 // Function to calculate the gpa score
 function gpaResult() {
@@ -26,6 +67,8 @@ function gpaResult() {
   let totalUnit = call(".totalUnit");
   let gpaValue = call(".gpaScore");
   let error = call(".error");
+  let cgpaScore = call(".cgpaScore");
+  let resultContinue = call(".resultContinue");
 
   let arrCredit = [];
   let arrGrade = [];
@@ -75,6 +118,12 @@ function gpaResult() {
       ? disErr()
       : (sumGPA / sumCredit).toFixed(2);
 
+  let scoreValue = (sumGPA / sumCredit).toFixed(2);
+
+  cgpaArray.push(scoreValue);
+
+  cgpaScore.innerHTML = cgpaCal();
+
   // display Error Function is to tell the user
   // that he/she hasn't filled all inputs
   // whereby display an error
@@ -93,7 +142,19 @@ function gpaResult() {
     // return 0 if there's an error
     return 0;
   }
+
+  if ((sumGPA / sumCredit).toFixed(2) !== "NaN") {
+    resultContinue.style.display = "block";
+  }
+  console.log(cgpaArray);
 }
+
+function cgpaCal() {
+  let sum = cgpaArray.reduce((a, b) => Number(a) + Number(b));
+  return (sum / cgpaArray.length).toFixed(2);
+}
+
+let cgpaArray = [];
 
 // Function to add new inputs to the pa
 function addNewInput() {
@@ -108,7 +169,25 @@ function addNewInput() {
           <input type="text" name="courseCode" class="courseCode" />
         </td>
         <td>
-          <input type="text" name="creditUnit" class="creditUnit" />
+          <input
+            type="num"
+            name="creditUnit"
+            list="creditUnit"
+            class="creditUnit"
+          />
+          <datalist id="creditUnit">
+            <option value="0"></option>
+            <option value="1"></option>
+            <option value="2"></option>
+            <option value="3"></option>
+            <option value="4"></option>
+            <option value="5"></option>
+            <option value="6"></option>
+            <option value="7"></option>
+            <option value="8"></option>
+            <option value="9"></option>
+            <option value="10"></option>
+          </datalist>
         </td>
         <td>
           <input type="text" name="grade" list="grades" class="grade" />
@@ -162,18 +241,3 @@ function gradeToPoints(grade) {
       return undefined;
   }
 }
-
-// let outputResult = document.createElement("h1");
-// outputResult.innerHTML = "hello";
-
-// function addResultSection() {
-//   let addNewSecInp = call(".addNewSecInp").value;
-//   let output = call(".overall-output");
-
-//   function createSection(num) {
-//     // return outputResult.repeat(num);
-//     return (outputResult.innerHTML = "hello");
-//   }
-
-//   output.innerHTML += createSection(addNewSecInp);
-// }

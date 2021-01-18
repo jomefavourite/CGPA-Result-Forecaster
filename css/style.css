@@ -54,7 +54,7 @@ section + section {
   width: 100%;
 }
 
-.second__section button {
+button {
   padding: 0.4rem 1.2rem;
   border-radius: 20px;
   border: none;
@@ -77,4 +77,12 @@ section + section {
 
 .third__section div + div {
   margin-left: 20px;
+}
+
+.result__continue {
+  display: none;
+}
+
+.display_result {
+  display: none;
 }
