@@ -8,9 +8,6 @@ function callAll(name) {
   return document.querySelectorAll(name);
 }
 
-// let name = prompt("Enter your name");
-// let years = prompt("How long is your program?");
-
 // Selecting various elements from the DOM
 const addInputBtn = call(".add");
 const calculateBtn = call(".calculate");
@@ -18,15 +15,23 @@ const addNewSecBtn = call(".addNewSecBtn");
 const addNewSecInp = call(".addNewSecInp");
 const yesBtn = call(".yesBtn");
 const noBtn = call(".noBtn");
+const submitBtn = call(".submitBtn");
+const userName = call("#name");
+const years = call("#years");
 
-// Making Elements have an event listener - click
-addInputBtn.addEventListener("click", addNewInput);
-calculateBtn.addEventListener("click", gpaResult);
+var sectionCount = 2;
+
 document.addEventListener("keydown", e => {
   if (e.key === "Enter") addNewInput();
 });
-yesBtn.addEventListener("click", () => {
-  const creditUnits = callAll(".creditUnit"); // Selecting all elements having the class name .creditUnit
+addInputBtn.addEventListener("click", addNewInput);
+calculateBtn.addEventListener("click", gpaResult);
+yesBtn.addEventListener("click", continueCalculation);
+noBtn.addEventListener("click", stopCalculation);
+submitBtn.addEventListener("click", formSubmit);
+
+function continueCalculation() {
+  const creditUnits = callAll(".creditUnit");
   const grades = callAll(".grade");
   const courseCodeInputs = callAll(".courseCode");
   let totalUnit = call(".totalUnit");
@@ -49,20 +54,26 @@ yesBtn.addEventListener("click", () => {
   totalUnit.innerHTML = 0;
   gpaValue.innerHTML = 0;
 
-  semester.innerHTML = count++;
-});
+  semester.innerHTML = sectionCount++;
+}
 
-var count = 2;
-
-noBtn.addEventListener("click", () => {
+function stopCalculation() {
   let displayResult = call(".displayResult");
-  let content = `<h3>${name} you're on a ${years} years program</h3>
+  let content = `
+    <h3>${userName.value} you're on a ${years.value} years program</h3>
      <p>${cgpaCal()} is your current CGPA score</p>
-     <p>You'll need **** as an average for each semester to come, good luck</p>`;
-
+     <p>You'll need **** as an average for each semester to come, good luck</p>
+  `;
   displayResult.style.display = "block";
   displayResult.innerHTML = content;
-});
+}
+
+function formSubmit(e) {
+  e.preventDefault();
+  const modalBg = call(".modal-bg");
+
+  modalBg.style.display = "none";
+}
 
 // Function to calculate the gpa score
 function gpaResult() {
@@ -77,18 +88,10 @@ function gpaResult() {
   let arrCredit = [];
   let arrGrade = [];
 
-  // Looping through the various credit unit input
-  // and then get each values in each input pushing
-  // those values to an array - arrCredit
   creditUnits.forEach(creditUnit => {
     arrCredit.push(Number(creditUnit.value));
   });
 
-  // Looping through the various grade input
-  // and then invoking a function ( gradeToPoints() )
-  // with the value in the input such as A,B,C (argument passed)
-  // which returns 5,4,3  and then get the returned numbers
-  // which is then pushed to an array - arrGrade
   grades.forEach(grade => {
     arrGrade.push(gradeToPoints(grade.value));
   });
@@ -98,11 +101,6 @@ function gpaResult() {
     return a + b;
   });
 
-  // From array Grade (arrGrade) and array Credit (arrCredit)
-  // For example arrGrade [5,4,3,2,1] and arrCredit [3,2,1,3,3]
-  // Each index from both arrays are multiplied together and
-  // the added to the next index.
-  // Such as 5 * 3 + 4 * 2 + 3 * 1 + 2 * 3 + 1 * 3
   // Output is stored as sumGPA
   let sumGPA = arrGrade.reduce((r, a, i) => {
     return r + a * arrCredit[i];
@@ -111,12 +109,6 @@ function gpaResult() {
   // totalUnit has the total summed credit
   totalUnit.innerHTML = sumCredit;
 
-  // gpaValue has the value (sumGPA / sumCredit).toFixed(2)
-  // ( sumGPA / sumCredit ) does the calculation
-  // toFixed(2) rounds it to two decimal point
-  //
-  // A condition to detect if value is NaN, if true disErr() is invoked else return the value without NaN
-  // (sumGPA / sumCredit).toFixed(2) === "NaN" ? disErr() : (sumGPA / sumCredit).toFixed(2);
   gpaValue.innerHTML =
     (sumGPA / sumCredit).toFixed(2) === "NaN"
       ? disErr()
@@ -128,9 +120,6 @@ function gpaResult() {
 
   cgpaScore.innerHTML = cgpaCal();
 
-  // display Error Function is to tell the user
-  // that he/she hasn't filled all inputs
-  // whereby display an error
   function disErr() {
     // Error displays immediately
     setTimeout(() => {
@@ -142,8 +131,6 @@ function gpaResult() {
       error.style.display = "none";
     }, 5000);
 
-    // When the function is called it should
-    // return 0 if there's an error
     return 0;
   }
 
@@ -233,6 +220,31 @@ function gradeToPoints(grade) {
       break;
     case "F":
       return 0;
+      break;
+    default:
+      return undefined;
+  }
+}
+
+function yearsProgram(years) {
+  switch (years) {
+    case "1":
+      return 2;
+      break;
+    case "2":
+      return 4;
+      break;
+    case "3":
+      return 6;
+      break;
+    case "4":
+      return 8;
+      break;
+    case "5":
+      return 10;
+      break;
+    case "6":
+      return 12;
       break;
     default:
       return undefined;

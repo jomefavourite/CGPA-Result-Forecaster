@@ -3,12 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Result Calculator</title>
+    <title>CGPA Result Calculator</title>
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
     <main class="container">
-      <h1>Result Calculator</h1>
+      <h1>CGPA Result Calculator</h1>
 
       <div class="overall-output">
         <div>
@@ -69,11 +69,11 @@
                 </tbody>
               </table>
             </form>
-          </section>
 
-          <section class="second__section">
-            <button class="add">Add</button>
-            <button class="calculate">Calculate</button>
+            <div>
+              <button class="add">Add</button>
+              <button class="calculate">Calculate</button>
+            </div>
           </section>
 
           <section class="third__section">
@@ -98,6 +98,25 @@
           </section>
 
           <section class="displayResult display_result"></section>
+
+          <div class="modal-bg">
+            <div class="modal">
+              <h2>Please fill the form</h2>
+              <form>
+                <div>
+                  <label for="name">Name:</label>
+                  <input type="text" name="name" id="name" required />
+                </div>
+                <div>
+                  <label for="years">Years of Program</label>
+                  <input type="num" name="years" id="years" required />
+                </div>
+                <button type="submit" class="submitBtn" aria-label="submit">
+                  Submit
+                </button>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
     </main>
