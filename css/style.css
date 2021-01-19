@@ -13,9 +13,6 @@
 body {
   background: #d7d7db;
   font-family: "Montserrat";
-}
-
-main {
   text-align: center;
 }
 
@@ -26,6 +23,12 @@ section {
 
 section + section {
   margin-top: 1rem;
+}
+
+#formError {
+  color: red;
+  font-size: 12px;
+  margin-bottom: 2rem;
 }
 
 .error {
@@ -55,21 +58,6 @@ section + section {
   max-width: 20px;
 }
 
-.first__section .table {
-  width: 100%;
-}
-
-.first__section .table tr {
-  display: flex;
-  justify-content: space-between;
-}
-
-.first__section .table input,
-.first__section .table select {
-  width: 100px;
-  flex-basis: 100%;
-}
-
 button {
   padding: 0.4rem 1.2rem;
   border-radius: 20px;
@@ -80,6 +68,7 @@ button {
 .third__section {
   display: flex;
   justify-content: center;
+  border-radius: 10px;
 }
 
 .third__section div {
@@ -136,11 +125,33 @@ button {
   justify-content: space-between;
 }
 
-.modal div input {
-  border: none;
-  border-bottom: 2px solid black;
+.heading {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
 
-.modal input {
-  width: 50%;
+.display__output__container {
+  display: flex;
+  gap: 10px;
+}
+
+.display__output__container select {
+  width: 100%;
+}
+
+.display__output__container ~ * {
+  flex: 1 1 0px;
+}
+
+.display__output__container + .display__output__container {
+  margin-top: 0.3rem;
+}
+
+.modal-bg {
+  display: none;
+}
+
+.cal__btns {
+  margin-top: 2rem;
 }

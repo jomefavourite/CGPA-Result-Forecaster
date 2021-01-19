@@ -16,10 +16,15 @@ const addNewSecInp = call(".addNewSecInp");
 const yesBtn = call(".yesBtn");
 const noBtn = call(".noBtn");
 const submitBtn = call(".submitBtn");
+const addInput = call(".numAdd");
 const userName = call("#name");
 const years = call("#years");
+const undo = call(".undo");
 
 var sectionCount = 2;
+let cgpaArray = [];
+let clickedYesBtn = false;
+let clickedUndoBtn = false;
 
 document.addEventListener("keydown", e => {
   if (e.key === "Enter") addNewInput();
@@ -29,6 +34,16 @@ calculateBtn.addEventListener("click", gpaResult);
 yesBtn.addEventListener("click", continueCalculation);
 noBtn.addEventListener("click", stopCalculation);
 submitBtn.addEventListener("click", formSubmit);
+undo.addEventListener("click", popCgpaArray);
+
+function popCgpaArray() {
+  let newCgpaArr;
+  if (!clickedUndoBtn) {
+    return (newCgpaArr = cgpaArray.pop());
+  }
+
+  return newCgpaArr;
+}
 
 function continueCalculation() {
   const creditUnits = callAll(".creditUnit");
@@ -37,42 +52,96 @@ function continueCalculation() {
   let totalUnit = call(".totalUnit");
   let gpaValue = call(".gpaScore");
   const semester = call(".semester");
-  const addInput = call(".numAdd");
 
-  addInput.focus();
-  addInput.select();
+  if (!clickedYesBtn) {
+    addInput.focus();
+    addInput.select();
 
-  grades.forEach(grade => {
-    grade.value = "";
-  });
-  creditUnits.forEach(creditUnit => {
-    creditUnit.value = "";
-  });
-  courseCodeInputs.forEach(courseCodeInput => {
-    courseCodeInput.value = "";
-  });
-  totalUnit.innerHTML = 0;
-  gpaValue.innerHTML = 0;
+    grades.forEach(grade => {
+      grade.value = "";
+    });
+    creditUnits.forEach(creditUnit => {
+      creditUnit.value = "";
+    });
+    courseCodeInputs.forEach(courseCodeInput => {
+      courseCodeInput.value = "";
+    });
+    totalUnit.innerHTML = 0;
+    gpaValue.innerHTML = 0;
 
-  semester.innerHTML = sectionCount++;
+    semester.innerHTML = sectionCount++;
+
+    clickedYesBtn = true;
+
+    console.log(clickedYesBtn);
+  }
 }
+
+// 4.50-5.00         1st Class
+// 3.5-4.49            2nd Class Upper
+// 2.50-3.49          2nd Class Lower
+// 1.50-2.49          3rd Class
+// 1.00-1.49          Pass
+// 0.-0.99            Fail
 
 function stopCalculation() {
   let displayResult = call(".displayResult");
   let content = `
-    <h3>${userName.value} you're on a ${years.value} years program</h3>
-     <p>${cgpaCal()} is your current CGPA score</p>
-     <p>You'll need **** as an average for each semester to come, good luck</p>
+    <h3>${firstUpper(userName.value)} you're on a ${
+    years.value
+  } years program</h3>
+    <p>${cgpaCal()} is your current CGPA score</p>
+
+    <div>
+      <p>You'll need ${averageGPA(
+        years.value,
+        4.5
+      )} to end up with a first class</p>
+      <p>You'll need ${averageGPA(
+        years.value,
+        3.5
+      )} to end up with a second class upper</p>
+      <p>You'll need ${averageGPA(
+        years.value,
+        2.5
+      )} to end up with a second class lower</p>
+      <p>You'll need ${averageGPA(
+        years.value,
+        1.5
+      )} to end up with a third class</p>
+      <p>You'll need ${averageGPA(years.value, 1)} to end up with a pass</p>
+    </div>
+    
   `;
   displayResult.style.display = "block";
   displayResult.innerHTML = content;
 }
 
 function formSubmit(e) {
-  e.preventDefault();
+  const formError = call("#formError");
   const modalBg = call(".modal-bg");
+  let messages = [];
 
-  modalBg.style.display = "none";
+  addInput.focus();
+  addInput.select();
+  if (userName.value === "" || userName.value == null) {
+    messages.push("Name is required");
+  }
+
+  if (years.value === "" || years.value == null) {
+    messages.push("Years of program is required");
+  }
+
+  if (messages.length > 0) {
+    formError.innerText = messages.join(", ");
+  } else {
+    e.preventDefault();
+    modalBg.style.display = "none";
+  }
+}
+
+function firstUpper(name) {
+  return name.charAt(0).toUpperCase() + name.slice(1);
 }
 
 // Function to calculate the gpa score
@@ -137,6 +206,10 @@ function gpaResult() {
   if ((sumGPA / sumCredit).toFixed(2) !== "NaN") {
     resultContinue.style.display = "block";
   }
+
+  clickedYesBtn = false;
+  clickedUndoBtn = false;
+
   console.log(cgpaArray);
 }
 
@@ -145,46 +218,60 @@ function cgpaCal() {
   return (sum / cgpaArray.length).toFixed(2);
 }
 
-let cgpaArray = [];
+function averageGPA(years, score) {
+  // 4.50-5.00         1st Class
+  // 3.5-4.49            2nd Class Upper
+  // 2.50-3.49          2nd Class Lower
+  // 1.50-2.49          3rd Class
+  // 1.00-1.49          Pass
+  // 0.-0.99            Fail
+
+  let gpaNext;
+
+  const extract = cgpaArray.reduce((a, b) => {
+    a.push(score - b);
+    return a;
+  }, []);
+  const extractSum = extract.reduce((a, b) => a + b);
+  gpaNext = extractSum / (yearsProgram(years) - cgpaArray.length) + score;
+
+  return gpaNext;
+}
 
 // Function to add new inputs to the pa
 function addNewInput() {
-  const tbody = call(".tbody"); // selecting the table body
+  const displayOutput = call(".display__output"); // selecting the table body
   const addInput = call(".numAdd").value; // indicating the number of rows to be added
 
   // A function to add rows which takes a parameter
   function addRow(num) {
     let str = `
-      <tr>
-        <td>
-          <input type="text" name="courseCode" class="courseCode" />
-        </td>
-        <td>
-          <select class="creditUnit">
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-          </select>
-        </td>
-        <td>
-          <select class="grade">
-            <option value="A">A</option>
-            <option value="B">B</option>
-            <option value="C">C</option>
-            <option value="D">D</option>
-            <option value="E">E</option>
-            <option value="F">F</option>
-          </select>
-        </td>
-      </tr>
+      <div class="display__output__container">
+        <input type="text" name="courseCode" class="courseCode" />
+    
+        <select class="creditUnit">
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+      
+        <select class="grade">
+          <option value="A">A</option>
+          <option value="B">B</option>
+          <option value="C">C</option>
+          <option value="D">D</option>
+          <option value="E">E</option>
+          <option value="F">F</option>
+        </select>
+      </div>
     `;
 
     // If the parameter is null or there's nothing ""
@@ -197,7 +284,7 @@ function addNewInput() {
   }
 
   // Function invoked
-  tbody.innerHTML = addRow(addInput);
+  displayOutput.innerHTML = addRow(addInput);
 }
 
 // Grade value to points
