@@ -87,29 +87,33 @@ function continueCalculation() {
 function stopCalculation() {
   let displayResult = call(".displayResult");
   let content = `
-    <h3>${firstUpper(userName.value)} you're on a ${
+    <div class="display__result__content">
+      <h3>${firstUpper(userName.value)} you're on a ${
     years.value
   } years program</h3>
-    <p>${cgpaCal()} is your current CGPA score</p>
+      <p>${cgpaCal()} is your current CGPA score</p>
 
-    <div>
-      <p>You'll need ${averageGPA(
-        years.value,
-        4.5
-      )} to end up with a first class</p>
-      <p>You'll need ${averageGPA(
-        years.value,
-        3.5
-      )} to end up with a second class upper</p>
-      <p>You'll need ${averageGPA(
-        years.value,
-        2.5
-      )} to end up with a second class lower</p>
-      <p>You'll need ${averageGPA(
-        years.value,
-        1.5
-      )} to end up with a third class</p>
-      <p>You'll need ${averageGPA(years.value, 1)} to end up with a pass</p>
+      <div>
+        <p>You'll need ${averageGPA(
+          years.value,
+          4.5
+        )} to end up with a first class</p>
+        <p>You'll need ${averageGPA(
+          years.value,
+          3.5
+        )} to end up with a second class upper</p>
+        <p>You'll need ${averageGPA(
+          years.value,
+          2.5
+        )} to end up with a second class lower</p>
+        <p>You'll need ${averageGPA(
+          years.value,
+          1.5
+        )} to end up with a third class</p>
+        <p>You'll need ${averageGPA(years.value, 1)} to end up with a pass</p>
+      </div>
+
+      <button>Close</button>
     </div>
     
   `;
