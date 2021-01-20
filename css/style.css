@@ -186,4 +186,6 @@ button {
   justify-content: center;
   align-items: center;
   margin-top: 0;
+
+  display: none;
 }
