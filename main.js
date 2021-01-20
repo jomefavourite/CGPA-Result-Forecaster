@@ -86,6 +86,7 @@ function continueCalculation() {
 
 function stopCalculation() {
   let displayResult = call(".displayResult");
+  let displayBg = call(".modalResult-bg");
   let content = `
     <div class="display__result__content">
       <h3>${firstUpper(userName.value)} you're on a ${
@@ -117,6 +118,7 @@ function stopCalculation() {
     </div>
     
   `;
+  displayBg.style.display = "flex";
   displayResult.style.display = "block";
   displayResult.innerHTML = content;
 }
