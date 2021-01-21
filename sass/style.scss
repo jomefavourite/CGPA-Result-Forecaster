@@ -91,6 +91,7 @@ button {
 
 .result__continue {
   display: none;
+  border-radius: $br;
 }
 
 .display__result {
@@ -118,7 +119,7 @@ button {
   flex-direction: column;
 
   width: 90%;
-  max-width: 1000px;
+  max-width: 740px;
   padding: 2rem;
 
   h2 {
@@ -178,17 +179,17 @@ button {
 }
 
 .display__result {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
   &__content {
     background: white;
     border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
 
-    width: 90%;
+    width: 95%;
     max-width: 740px;
-    margin: 0 auto;
     padding: 2rem;
   }
 }
@@ -200,7 +201,6 @@ button {
   top: 0;
   left: 0;
   background: rgba(0, 0, 0, 0.5);
-  display: flex;
   justify-content: center;
   align-items: center;
 

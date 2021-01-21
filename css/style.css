@@ -86,6 +86,7 @@ button {
 
 .result__continue {
   display: none;
+  border-radius: 10px;
 }
 
 .display__result {
@@ -112,7 +113,7 @@ button {
   align-items: center;
   flex-direction: column;
   width: 90%;
-  max-width: 1000px;
+  max-width: 740px;
   padding: 2rem;
 }
 
@@ -162,16 +163,18 @@ button {
   margin-top: 2rem;
 }
 
-.display__result__content {
-  background: white;
-  border-radius: 10px;
+.display__result {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 90%;
+}
+
+.display__result__content {
+  background: white;
+  border-radius: 10px;
+  width: 95%;
   max-width: 740px;
-  margin: 0 auto;
   padding: 2rem;
 }
 
@@ -182,13 +185,8 @@ button {
   top: 0;
   left: 0;
   background: rgba(0, 0, 0, 0.5);
-  display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 0;
-<<<<<<< HEAD
-=======
-
->>>>>>> 298c540e2bff358e31288aabdee973e63ffc14f7
   display: none;
 }

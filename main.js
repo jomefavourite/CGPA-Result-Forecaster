@@ -20,6 +20,14 @@ const addInput = call(".numAdd");
 const userName = call("#name");
 const years = call("#years");
 const undo = call(".undo");
+const creditUnits = callAll(".creditUnit");
+const grades = callAll(".grade");
+const courseCodeInputs = callAll(".courseCode");
+let totalUnit = call(".totalUnit");
+let gpaValue = call(".gpaScore");
+const semester = call(".semester");
+let displayResult = call(".displayResult");
+let displayBg = call(".modalResult-bg");
 
 var sectionCount = 2;
 let cgpaArray = [];
@@ -34,11 +42,26 @@ calculateBtn.addEventListener("click", gpaResult);
 yesBtn.addEventListener("click", continueCalculation);
 noBtn.addEventListener("click", stopCalculation);
 submitBtn.addEventListener("click", formSubmit);
-undo.addEventListener("click", popCgpaArray);
+undo.addEventListener("click", undoCgpaArray);
 
-function popCgpaArray() {
+function undoCgpaArray() {
   let newCgpaArr;
   if (!clickedUndoBtn) {
+    addInput.focus();
+    addInput.select();
+
+    grades.forEach(grade => {
+      grade.value = "";
+    });
+    creditUnits.forEach(creditUnit => {
+      creditUnit.value = "";
+    });
+    courseCodeInputs.forEach(courseCodeInput => {
+      courseCodeInput.value = "";
+    });
+    totalUnit.innerHTML = 0;
+    gpaValue.innerHTML = 0;
+
     return (newCgpaArr = cgpaArray.pop());
   }
 
@@ -46,13 +69,6 @@ function popCgpaArray() {
 }
 
 function continueCalculation() {
-  const creditUnits = callAll(".creditUnit");
-  const grades = callAll(".grade");
-  const courseCodeInputs = callAll(".courseCode");
-  let totalUnit = call(".totalUnit");
-  let gpaValue = call(".gpaScore");
-  const semester = call(".semester");
-
   if (!clickedYesBtn) {
     addInput.focus();
     addInput.select();
@@ -78,15 +94,14 @@ function continueCalculation() {
 }
 
 // 4.50-5.00         1st Class
-// 3.5-4.49            2nd Class Upper
-// 2.50-3.49          2nd Class Lower
-// 1.50-2.49          3rd Class
-// 1.00-1.49          Pass
-// 0.-0.99            Fail
+// 3.5-4.49          2nd Class Upper
+// 2.50-3.49         2nd Class Lower
+// 1.50-2.49         3rd Class
+// 1.00-1.49         Pass
+// 0.-0.99           Fail
 
 function stopCalculation() {
-  let displayResult = call(".displayResult");
-  let displayBg = call(".modalResult-bg");
+  let firstClass = averageGPA(years.value, 4.6);
   let content = `
     <div class="display__result__content">
       <h3>${firstUpper(userName.value)} you're on a ${
@@ -94,33 +109,41 @@ function stopCalculation() {
   } years program</h3>
       <p>${cgpaCal()} is your current CGPA score</p>
 
+      <small>Note: The average score is approximated</small>
+
       <div>
+        ${
+          firstClass > 4.9
+            ? ""
+            : `<p>You'll need ${firstClass} to end up with a <strong>1st class</strong></p>`
+        }
+
         <p>You'll need ${averageGPA(
           years.value,
-          4.5
-        )} to end up with a first class</p>
+          3.6
+        )} to end up with a <strong>2nd class upper</strong></p>
+
         <p>You'll need ${averageGPA(
           years.value,
-          3.5
-        )} to end up with a second class upper</p>
-        <p>You'll need ${averageGPA(
-          years.value,
-          2.5
-        )} to end up with a second class lower</p>
-        <p>You'll need ${averageGPA(
-          years.value,
-          1.5
-        )} to end up with a third class</p>
-        <p>You'll need ${averageGPA(years.value, 1)} to end up with a pass</p>
+          2.6
+        )} to end up with a <strong>2nd class lower</strong></p>
+        
       </div>
 
-      <button>Close</button>
+      <button class="closeBtn">Close</button>
     </div>
     
   `;
   displayBg.style.display = "flex";
-  displayResult.style.display = "block";
+  displayResult.style.display = "flex";
   displayResult.innerHTML = content;
+
+  let closeBtn = call(".closeBtn");
+
+  closeBtn.addEventListener("click", () => {
+    displayBg.style.display = "none";
+    displayResult.style.display = "none";
+  });
 }
 
 function formSubmit(e) {
@@ -239,7 +262,20 @@ function averageGPA(years, score) {
     return a;
   }, []);
   const extractSum = extract.reduce((a, b) => a + b);
-  gpaNext = extractSum / (yearsProgram(years) - cgpaArray.length) + score;
+
+  function getAverage() {
+    let average;
+
+    average = extractSum / (yearsProgram(years) - cgpaArray.length) + score;
+
+    if (average < 0) {
+      return 0;
+    }
+
+    return average.toFixed(2);
+  }
+
+  gpaNext = getAverage();
 
   return gpaNext;
 }
@@ -253,11 +289,11 @@ function addNewInput() {
   function addRow(num) {
     let str = `
       <div class="display__output__container">
-        <input type="text" name="courseCode" class="courseCode" />
+        <input type="text" name="courseCode" class="courseCode" placeholder="e.g. Course 1" />
     
         <select class="creditUnit">
           <option value="0">0</option>
-          <option value="1">1</option>
+          <option value="1" selected>1</option>
           <option value="2">2</option>
           <option value="3">3</option>
           <option value="4">4</option>
