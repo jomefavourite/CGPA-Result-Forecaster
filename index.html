@@ -8,7 +8,14 @@
   </head>
   <body>
     <main class="container">
-      <h1>CGPA Result Calculator</h1>
+      <div class="bg"></div>
+      <div class="title">
+        <h1>CGPA Result Calculator</h1>
+        <p>
+          Calculate your CGPA score and from your score get the average estimate
+          score to end up with a 1st, 2nd upper/lower class.
+        </p>
+      </div>
 
       <div class="overall-output">
         <div>
@@ -17,7 +24,7 @@
           </div>
 
           <section class="first__section">
-            <div class="first__section__heading">
+            <div class="first__section__display__heading">
               <h2><span class="semester">1</span> Section</h2>
 
               <div>
@@ -26,43 +33,76 @@
               </div>
             </div>
 
-            <div class="heading">
-              <h3>Course Code</h3>
-              <h3>Credit Unit</h3>
-              <h3>Grade</h3>
-            </div>
+            <div class="display">
+              <div class="display__heading">
+                <h3>Course Code</h3>
+                <h3>Credit Unit</h3>
+                <h3>Grade</h3>
+              </div>
 
-            <div class="display__output">
-              <div class="display__output__container">
-                <input
-                  type="text"
-                  name="courseCode"
-                  class="courseCode"
-                  placeholder="e.g. Course 1"
-                />
-
-                <select class="creditUnit">
-                  <option value="0">0</option>
-                  <option value="1" selected>1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9</option>
-                  <option value="10">10</option>
-                </select>
-
-                <select class="grade">
-                  <option value="A">A</option>
-                  <option value="B">B</option>
-                  <option value="C">C</option>
-                  <option value="D">D</option>
-                  <option value="E">E</option>
-                  <option value="F">F</option>
-                </select>
+              <div class="display__output">
+                <div class="display__output__container">
+                  <input
+                    type="text"
+                    name="courseCode"
+                    class="courseCode"
+                    placeholder="e.g. Course 1"
+                  />
+  
+                  <select class="creditUnit">
+                    <option value="0">0</option>
+                    <option value="1" selected>1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                  </select>
+  
+                  <select class="grade">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="E">E</option>
+                    <option value="F">F</option>
+                  </select>
+                </div>
+                <div class="display__output__container">
+                  <input
+                    type="text"
+                    name="courseCode"
+                    class="courseCode"
+                    placeholder="e.g. Course 1"
+                  />
+  
+                  <select class="creditUnit">
+                    <option value="0">0</option>
+                    <option value="1" selected>1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                  </select>
+  
+                  <select class="grade">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="E">E</option>
+                    <option value="F">F</option>
+                  </select>
+                </div>
               </div>
             </div>
 
@@ -89,7 +129,7 @@
           </section>
 
           <section class="resultContinue result__continue">
-            <h3>Would you like to calculate for another Semester?</h3>
+            <h4>Would you like to calculate for another Semester?</h3>
             <button class="yesBtn">Yes</button>
             <button class="noBtn">No</button>
           </section>

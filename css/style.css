@@ -11,14 +11,42 @@
 }
 
 body {
-  background: #d7d7db;
   font-family: "Montserrat";
+  font-family: "Open Sans";
   text-align: center;
+  font-size: 15px;
+}
+
+.bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 500px;
+  width: 100%;
+  background: linear-gradient(45deg, #3964fe, #47c3fd);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 80%);
+  padding-top: 2em;
+  z-index: -1000;
+}
+
+.title {
+  color: #fff;
+  margin: 3rem 0 2rem;
+}
+
+.title h1 {
+  font-size: 1.5rem;
+}
+
+.title p {
+  max-width: 470px;
+  margin: 0 auto;
 }
 
 section {
   background: #fff;
   padding: 1rem;
+  box-shadow: 0 0 10px rgba(128, 128, 128, 0.315);
 }
 
 section + section {
@@ -26,7 +54,7 @@ section + section {
 }
 
 #formError {
-  color: red;
+  color: #ee3838;
   font-size: 12px;
   margin-bottom: 2rem;
 }
@@ -34,26 +62,27 @@ section + section {
 .error {
   display: none;
   padding: 0.5rem;
-  background: red;
+  background: #ee3838;
   color: #fff;
   margin: 0.5rem 0;
+  border-radius: 10px;
 }
 
 .first__section {
   border-radius: 10px;
 }
 
-.first__section__heading {
+.first__section__display__heading {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
 }
 
-.first__section__heading label {
+.first__section__display__heading label {
   font-size: 13px;
 }
 
-.first__section__heading input {
+.first__section__display__heading input {
   width: 100%;
   max-width: 20px;
 }
@@ -100,9 +129,9 @@ button {
   top: 0;
   left: 0;
   background: rgba(0, 0, 0, 0.5);
-  display: flex;
   justify-content: center;
   align-items: center;
+  display: flex;
 }
 
 .modal {
@@ -126,19 +155,23 @@ button {
   justify-content: space-between;
 }
 
-.heading {
+.display__heading {
   display: flex;
   justify-content: space-around;
   gap: 20px;
 }
 
-.heading h3 {
+.display__heading h3 {
   width: 100%;
   font-size: 13px;
 }
 
-.heading ~ * {
+.display__heading ~ * {
   flex: 1 1 0px;
+}
+
+.display {
+  margin: 2rem 0;
 }
 
 .display__output__container {
@@ -149,6 +182,9 @@ button {
 .display__output__container select,
 .display__output__container input {
   width: 100%;
+  border: 1px solid #c5c5c5;
+  border-radius: 5px;
+  padding: 0.2rem 0.5rem;
 }
 
 .display__output__container ~ * {
@@ -157,10 +193,6 @@ button {
 
 .display__output__container + .display__output__container {
   margin-top: 0.3rem;
-}
-
-.cal__btns {
-  margin-top: 2rem;
 }
 
 .display__result {
