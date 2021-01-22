@@ -241,7 +241,7 @@ function averageGPA(years, score) {
   const extractSum = extract.reduce((a, b) => a + b);
   gpaNext = extractSum / (yearsProgram(years) - cgpaArray.length) + score;
 
-  return gpaNext;
+  return gpaNext.toFixed(2);
 }
 
 // Function to add new inputs to the pa
