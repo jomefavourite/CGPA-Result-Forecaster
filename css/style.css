@@ -10,8 +10,21 @@
   max-width: 740px;
 }
 
+button {
+  padding: 0.4rem 1.2rem;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  background: #5278fe;
+  color: #fff;
+  font-weight: 600;
+}
+
+button:hover {
+  background: #6c8cfe;
+}
+
 body {
-  font-family: "Montserrat";
   font-family: "Open Sans";
   text-align: center;
   font-size: 15px;
@@ -25,7 +38,6 @@ body {
   width: 100%;
   background: linear-gradient(45deg, #3964fe, #47c3fd);
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 80%);
-  padding-top: 2em;
   z-index: -1000;
 }
 
@@ -36,6 +48,7 @@ body {
 
 .title h1 {
   font-size: 1.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .title p {
@@ -68,54 +81,56 @@ section + section {
   border-radius: 10px;
 }
 
-.first__section {
+.calc__main {
   border-radius: 10px;
 }
 
-.first__section__display__heading {
+.calc__main__heading {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
 }
 
-.first__section__display__heading label {
+.calc__main__heading label {
   font-size: 13px;
 }
 
-.first__section__display__heading input {
+.calc__main__heading input {
   width: 100%;
-  max-width: 20px;
+  max-width: 30px;
+  border-radius: 5px;
+  text-align: center;
+  border: 1px solid #c5c5c5;
+  padding: 0.2rem 0.1rem;
 }
 
-button {
-  padding: 0.4rem 1.2rem;
-  border-radius: 20px;
-  border: none;
-  cursor: pointer;
-}
-
-.third__section {
+.calc__display {
   display: flex;
   justify-content: center;
   border-radius: 10px;
+  font-size: 12px;
 }
 
-.third__section div {
+.calc__display div {
   display: flex;
   align-items: center;
 }
 
-.third__section div p {
+.calc__display div p {
   margin-left: 20px;
 }
 
-.third__section div + div {
+.calc__display div + div {
   margin-left: 20px;
 }
 
 .result__continue {
   display: none;
   border-radius: 10px;
+}
+
+.result__continue div {
+  margin-top: 1rem;
 }
 
 .display__result {
@@ -128,7 +143,7 @@ button {
   height: 100vh;
   top: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.692);
   justify-content: center;
   align-items: center;
   display: flex;
@@ -153,6 +168,26 @@ button {
 .modal div {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.modal div label {
+  text-align: left;
+}
+
+.modal div input {
+  padding: 0.5rem 0.5rem;
+  border: 1px solid #c5c5c5;
+  border-radius: 5px;
+}
+
+.modal div + div {
+  margin-top: 1rem;
+}
+
+.modal button {
+  margin-top: 2rem;
 }
 
 .display__heading {
@@ -216,9 +251,15 @@ button {
   height: 100vh;
   top: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.692);
   justify-content: center;
   align-items: center;
   margin-top: 0;
   display: none;
+}
+
+@media (min-width: 500px) {
+  .calc__display {
+    font-size: 1rem;
+  }
 }

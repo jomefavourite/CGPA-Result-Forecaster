@@ -9,7 +9,7 @@ $shade: #c5c5c5;
   height: 100vh;
   top: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.692);
   justify-content: center;
   align-items: center;
 }
@@ -26,8 +26,21 @@ $shade: #c5c5c5;
   max-width: $maxWidth;
 }
 
+button {
+  padding: 0.4rem 1.2rem;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  background: lighten(#3964fe, 5%);
+  color: #fff;
+  font-weight: 600;
+
+  &:hover {
+    background: lighten(#3964fe, 10%);
+  }
+}
+
 body {
-  font-family: "Montserrat";
   font-family: "Open Sans";
   text-align: center;
   font-size: 15px;
@@ -41,7 +54,6 @@ body {
   width: 100%;
   background: linear-gradient(45deg, #3964fe, #47c3fd);
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 80%);
-  padding-top: 2em;
   z-index: -1000;
 }
 
@@ -51,6 +63,7 @@ body {
 
   h1 {
     font-size: 1.5rem;
+    margin-bottom: 0.5rem;
   }
 
   p {
@@ -84,10 +97,10 @@ section + section {
   border-radius: $br;
 }
 
-.first__section {
-  border-radius: 10px;
+.calc__main {
+  border-radius: $br;
 
-  &__display__heading {
+  &__heading {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -99,24 +112,20 @@ section + section {
     input {
       // display: block;
       width: 100%;
-      max-width: 20px;
+      max-width: 30px;
+      border-radius: $br - 5px;
+      text-align: center;
+      border: 1px solid $shade;
+      padding: 0.2rem 0.1rem;
     }
   }
 }
 
-button {
-  padding: 0.4rem 1.2rem;
-  border-radius: 20px;
-  border: none;
-  cursor: pointer;
-}
-// .second__section {
-// }
-
-.third__section {
+.calc__display {
   display: flex;
   justify-content: center;
   border-radius: $br;
+  font-size: 12px;
 
   div {
     display: flex;
@@ -135,6 +144,10 @@ button {
 .result__continue {
   display: none;
   border-radius: $br;
+
+  div {
+    margin-top: 1rem;
+  }
 }
 
 .display__result {
@@ -148,7 +161,7 @@ button {
 
 .modal {
   background: white;
-  border-radius: 10px;
+  border-radius: $br;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -165,6 +178,26 @@ button {
   div {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+
+    label {
+      text-align: left;
+    }
+
+    input {
+      padding: 0.5rem 0.5rem;
+      border: 1px solid $shade;
+      border-radius: $br - 5px;
+    }
+  }
+
+  div + div {
+    margin-top: 1rem;
+  }
+
+  button {
+    margin-top: 2rem;
   }
 }
 
@@ -212,10 +245,6 @@ button {
   }
 }
 
-.modal-bg {
-  // display: none;
-}
-
 .display__result {
   display: flex;
   justify-content: center;
@@ -234,8 +263,8 @@ button {
 
 .modalResult-bg {
   @include modalStyle();
-
   margin-top: 0;
-
   display: none;
 }
+
+@import "medium";

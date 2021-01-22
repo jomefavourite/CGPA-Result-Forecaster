@@ -23,12 +23,12 @@
             <p>Please fill all input field</p>
           </div>
 
-          <section class="first__section">
-            <div class="first__section__display__heading">
+          <section class="calc__main">
+            <div class="calc__main__heading">
               <h2><span class="semester">1</span> Section</h2>
 
               <div>
-                <label for="numAdd">Enter Number of courses to be added</label>
+                <label for="numAdd">Enter Number of courses to be added:</label>
                 <input type="num" name="numAdd" class="numAdd" value="2" />
               </div>
             </div>
@@ -113,7 +113,7 @@
             </div>
           </section>
 
-          <section class="third__section">
+          <section class="calc__display">
             <div>
               <h3>Total Unit</h3>
               <p class="totalUnit">0</p>
@@ -130,8 +130,10 @@
 
           <section class="resultContinue result__continue">
             <h4>Would you like to calculate for another Semester?</h3>
-            <button class="yesBtn">Yes</button>
-            <button class="noBtn">No</button>
+            <div>
+              <button class="yesBtn">Yes</button>
+              <button class="noBtn">No</button>
+            </div>
           </section>
 
           <section
@@ -149,13 +151,14 @@
                     type="text"
                     name="name"
                     id="name"
+                    placeholder="First name"
                     required
                     autocomplete="name"
                   />
                 </div>
                 <div>
-                  <label for="years">Years of Program</label>
-                  <input type="number" name="years" id="years" required />
+                  <label for="years">Years of Program:</label>
+                  <input type="number" name="years" id="years" placeholder="4 years" required />
                 </div>
                 <button type="submit" class="submitBtn">Submit</button>
               </form>
