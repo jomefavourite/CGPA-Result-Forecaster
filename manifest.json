@@ -2,7 +2,7 @@
     "name": "GPA / CGPA Calculator",
     "short_name" : "CGPA Calculator",
     "start_url": ".",
-    "background_color": "#5278fe",
+    "background_color": "#e0e6fc",
     "theme_color" : "#5d6b9c",
     "display": "standalone", 
     "orientation": "portrait",
