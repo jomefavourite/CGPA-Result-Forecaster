@@ -191,7 +191,7 @@ function firstUpper(name) {
 
 // Function to calculate the gpa score
 function gpaResult() {
-  const creditUnits = callAll(".creditUnit"); // Selecting all elements having the class name .creditUnit
+  const creditUnits = callAll(".creditUnit");
   const grades = callAll(".grade");
   let totalUnit = call(".totalUnit");
   let gpaValue = call(".gpaScore");
