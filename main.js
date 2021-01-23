@@ -25,6 +25,7 @@ const grades = callAll(".grade");
 const courseCodeInputs = callAll(".courseCode");
 let totalUnit = call(".totalUnit");
 let gpaValue = call(".gpaScore");
+const level = call(".level");
 const semester = call(".semester");
 let displayResult = call(".displayResult");
 let displayBg = call(".modalResult-bg");
@@ -85,7 +86,9 @@ function continueCalculation() {
     totalUnit.innerHTML = 0;
     gpaValue.innerHTML = 0;
 
-    semester.innerHTML = sectionCount++;
+    level.innerHTML = sectionCount++;
+
+    semester.innerHTML = "2nd";
 
     clickedYesBtn = true;
 
@@ -187,11 +190,15 @@ function gpaResult() {
   let arrGrade = [];
 
   creditUnits.forEach(creditUnit => {
-    arrCredit.push(Number(creditUnit.value));
+    if (creditUnit.value !== "") {
+      arrCredit.push(Number(creditUnit.value));
+    }
   });
 
   grades.forEach(grade => {
-    arrGrade.push(gradeToPoints(grade.value));
+    if (grade.value !== "") {
+      arrGrade.push(gradeToPoints(grade.value));
+    }
   });
 
   // From the array - arrCredit, adding all values in the array
@@ -217,6 +224,8 @@ function gpaResult() {
   cgpaArray.push(scoreValue);
 
   cgpaScore.innerHTML = cgpaCal();
+
+  // creditUnits.forEach(creditUnit => {});
 
   function disErr() {
     // Error displays immediately
