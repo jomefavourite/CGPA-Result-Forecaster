@@ -30,10 +30,11 @@ const semester = call(".semester");
 let displayResult = call(".displayResult");
 let displayBg = call(".modalResult-bg");
 
-var sectionCount = 2;
+var levelCount = 1;
 let cgpaArray = [];
 let clickedYesBtn = false;
 let clickedUndoBtn = false;
+let clickedCalcBtn = false;
 
 document.addEventListener("keydown", e => {
   if (e.key === "Enter") addNewInput();
@@ -63,7 +64,13 @@ function undoCgpaArray() {
     totalUnit.innerHTML = 0;
     gpaValue.innerHTML = 0;
 
-    return (newCgpaArr = cgpaArray.pop());
+    newCgpaArr = cgpaArray.pop();
+
+    clickedUndoBtn = true;
+    clickedCalcBtn = false;
+
+    console.log(cgpaArray);
+    return newCgpaArr;
   }
 
   return newCgpaArr;
@@ -86,11 +93,17 @@ function continueCalculation() {
     totalUnit.innerHTML = 0;
     gpaValue.innerHTML = 0;
 
-    level.innerHTML = sectionCount++;
+    if (semester.innerHTML === "1st") {
+      semester.innerHTML = "2nd";
+    } else {
+      semester.innerHTML = "1st";
+      levelCount++;
+    }
 
-    semester.innerHTML = "2nd";
+    level.innerHTML = levelCount;
 
     clickedYesBtn = true;
+    clickedCalcBtn = false;
 
     console.log(clickedYesBtn);
   }
@@ -104,7 +117,7 @@ function continueCalculation() {
 // 0.-0.99           Fail
 
 function stopCalculation() {
-  let firstClass = averageGPA(years.value, 4.6);
+  let firstClass = averageGPA(years.value, 4.5);
   let content = `
     <div class="display__result__content">
       <h3>${firstUpper(userName.value)} you're on a ${
@@ -118,18 +131,18 @@ function stopCalculation() {
         ${
           firstClass > 4.9
             ? ""
-            : `<p>You'll need ${firstClass} to end up with a <strong>1st class</strong></p>`
+            : `<p>You'll need ${firstClass} to end up with a <strong>1st class</strong> for each semesters left</p>`
         }
 
         <p>You'll need ${averageGPA(
           years.value,
-          3.6
-        )} to end up with a <strong>2nd class upper</strong></p>
+          3.5
+        )} to end up with a <strong>2nd class upper</strong> for each semesters left</p>
 
         <p>You'll need ${averageGPA(
           years.value,
-          2.6
-        )} to end up with a <strong>2nd class lower</strong></p>
+          2.5
+        )} to end up with a <strong>2nd class lower</strong> for each semesters left</p>
         
       </div>
 
@@ -189,64 +202,68 @@ function gpaResult() {
   let arrCredit = [];
   let arrGrade = [];
 
-  creditUnits.forEach(creditUnit => {
-    if (creditUnit.value !== "") {
-      arrCredit.push(Number(creditUnit.value));
-    }
-  });
+  if (!clickedCalcBtn) {
+    creditUnits.forEach(creditUnit => {
+      if (creditUnit.value !== "") {
+        arrCredit.push(Number(creditUnit.value));
+      }
+    });
 
-  grades.forEach(grade => {
-    if (grade.value !== "") {
-      arrGrade.push(gradeToPoints(grade.value));
-    }
-  });
+    grades.forEach(grade => {
+      if (grade.value !== "") {
+        arrGrade.push(gradeToPoints(grade.value));
+      }
+    });
 
-  // From the array - arrCredit, adding all values in the array
-  let sumCredit = arrCredit.reduce((a, b) => {
-    return a + b;
-  });
+    // From the array - arrCredit, adding all values in the array
+    let sumCredit = arrCredit.reduce((a, b) => {
+      return a + b;
+    });
 
-  // Output is stored as sumGPA
-  let sumGPA = arrGrade.reduce((r, a, i) => {
-    return r + a * arrCredit[i];
-  }, 0);
-
-  // totalUnit has the total summed credit
-  totalUnit.innerHTML = sumCredit;
-
-  gpaValue.innerHTML =
-    (sumGPA / sumCredit).toFixed(2) === "NaN"
-      ? disErr()
-      : (sumGPA / sumCredit).toFixed(2);
-
-  let scoreValue = (sumGPA / sumCredit).toFixed(2);
-
-  cgpaArray.push(scoreValue);
-
-  cgpaScore.innerHTML = cgpaCal();
-
-  // creditUnits.forEach(creditUnit => {});
-
-  function disErr() {
-    // Error displays immediately
-    setTimeout(() => {
-      error.style.display = "block";
+    // Output is stored as sumGPA
+    let sumGPA = arrGrade.reduce((r, a, i) => {
+      return r + a * arrCredit[i];
     }, 0);
 
-    // at 5s error message disappears
-    setTimeout(() => {
-      error.style.display = "none";
-    }, 5000);
+    // totalUnit has the total summed credit
+    totalUnit.innerHTML = sumCredit;
 
-    return 0;
+    gpaValue.innerHTML =
+      (sumGPA / sumCredit).toFixed(2) === "NaN"
+        ? disErr()
+        : (sumGPA / sumCredit).toFixed(2);
+
+    let scoreValue = (sumGPA / sumCredit).toFixed(2);
+
+    cgpaArray.push(scoreValue);
+
+    cgpaScore.innerHTML = cgpaCal();
+
+    // creditUnits.forEach(creditUnit => {});
+
+    function disErr() {
+      // Error displays immediately
+      setTimeout(() => {
+        error.style.display = "block";
+      }, 0);
+
+      // at 5s error message disappears
+      setTimeout(() => {
+        error.style.display = "none";
+      }, 5000);
+
+      return 0;
+    }
+
+    if ((sumGPA / sumCredit).toFixed(2) !== "NaN") {
+      resultContinue.style.display = "block";
+    }
+
+    clickedCalcBtn = true;
+
+    clickedYesBtn = false;
+    clickedUndoBtn = false;
   }
-
-  if ((sumGPA / sumCredit).toFixed(2) !== "NaN") {
-    resultContinue.style.display = "block";
-  }
-
-  clickedYesBtn = false;
-  clickedUndoBtn = false;
 
   console.log(cgpaArray);
 }

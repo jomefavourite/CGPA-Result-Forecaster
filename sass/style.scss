@@ -22,7 +22,7 @@ $shade: #c5c5c5;
 
 .container {
   width: 90%;
-  margin: 0 auto;
+  margin: 0 auto 2rem;
   max-width: $maxWidth;
 }
 
@@ -258,6 +258,14 @@ section + section {
     width: 95%;
     max-width: $maxWidth;
     padding: 2rem;
+
+    div {
+      margin: 1rem 0;
+
+      p + p {
+        margin-top: 0.5rem;
+      }
+    }
   }
 }
 

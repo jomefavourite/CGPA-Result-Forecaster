@@ -6,7 +6,7 @@
 
 .container {
   width: 90%;
-  margin: 0 auto;
+  margin: 0 auto 2rem;
   max-width: 740px;
 }
 
@@ -243,6 +243,14 @@ section + section {
   width: 95%;
   max-width: 740px;
   padding: 2rem;
+}
+
+.display__result__content div {
+  margin: 1rem 0;
+}
+
+.display__result__content div p + p {
+  margin-top: 0.5rem;
 }
 
 .modalResult-bg {
