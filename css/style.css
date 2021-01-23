@@ -2,69 +2,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-   overflow: hidden;
 }
 
 .container {
   width: 90%;
-  margin: 0 auto;
-  min-width: 100px;
-}
-
-body {
-  background: #3f3f3f;
-  font-family: "Montserrat";
-  text-align: center;
-}
-
-main h1 {
-  font-size: 4rem;
-  font-weight: lighter;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  color: white;
-}
-section {
-  background: #fff;
-  padding: 1rem;
-}
-
-section + section {
-  margin-top: 1rem;
-}
-
-#formError {
-  color: red;
-  font-size: 12px;
-  margin-bottom: 2rem;
-}
-
-.error {
-  display: none;
-  padding: 0.5rem;
-  background: red;
-  color: #fff;
-  margin: 0.5rem 0;
-}
-
-.first__section {
-  border-radius: 10px;
-}
-
-.first__section__heading {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
-.first__section__heading label {
-  font-size: 13px;
-}
-
-.first__section__heading input {
-  width: 100%;
-  max-width: 20px;
+  margin: 0 auto 2rem;
+  max-width: 740px;
 }
 
 button {
@@ -72,30 +15,122 @@ button {
   border-radius: 20px;
   border: none;
   cursor: pointer;
+  background: #5278fe;
+  color: #fff;
+  font-weight: 600;
 }
 
-.third__section {
+button:hover {
+  background: #6c8cfe;
+}
+
+body {
+  font-family: "Open Sans";
+  text-align: center;
+  font-size: 15px;
+}
+
+.bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 500px;
+  width: 100%;
+  background: linear-gradient(45deg, #3964fe, #47c3fd);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 80%);
+  z-index: -1000;
+}
+
+.title {
+  color: #fff;
+  margin: 3rem 0 2rem;
+}
+
+.title h1 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.title p {
+  max-width: 470px;
+  margin: 0 auto;
+}
+
+section {
+  background: #fff;
+  padding: 1rem;
+  box-shadow: 0 0 10px rgba(128, 128, 128, 0.315);
+}
+
+section + section {
+  margin-top: 1rem;
+}
+
+#formError {
+  color: #ee3838;
+  font-size: 12px;
+  margin-bottom: 2rem;
+}
+
+.error {
+  display: none;
+  padding: 0.5rem;
+  background: #ee3838;
+  color: #fff;
+  margin: 0.5rem 0;
+  border-radius: 10px;
+}
+
+.calc__main {
+  border-radius: 10px;
+}
+
+.calc__main__heading {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.calc__main__heading label {
+  font-size: 13px;
+}
+
+.calc__main__heading input {
+  width: 100%;
+  max-width: 30px;
+  border-radius: 5px;
+  text-align: center;
+  border: 1px solid #c5c5c5;
+  padding: 0.2rem 0.1rem;
+}
+
+.calc__display {
   display: flex;
   justify-content: center;
   border-radius: 10px;
-  align-items: center;
+  font-size: 12px;
 }
 
-.third__section div {
+.calc__display div {
   display: flex;
   align-items: center;
 }
 
-.third__section div p {
+.calc__display div p {
   margin-left: 20px;
 }
 
-.third__section div + div {
+.calc__display div + div {
   margin-left: 20px;
 }
 
 .result__continue {
   display: none;
+  border-radius: 10px;
+}
+
+.result__continue div {
+  margin-top: 1rem;
 }
 
 .display__result {
@@ -108,10 +143,10 @@ button {
   height: 100vh;
   top: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
+  background: rgba(0, 0, 0, 0.692);
   justify-content: center;
   align-items: center;
+  display: flex;
 }
 
 .modal {
@@ -122,7 +157,7 @@ button {
   align-items: center;
   flex-direction: column;
   width: 90%;
-  max-width: 1000px;
+  max-width: 740px;
   padding: 2rem;
 }
 
@@ -133,21 +168,45 @@ button {
 .modal div {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  gap: 20px;
 }
 
-.heading {
+.modal div label {
+  text-align: left;
+}
+
+.modal div input {
+  padding: 0.5rem 0.5rem;
+  border: 1px solid #c5c5c5;
+  border-radius: 5px;
+}
+
+.modal div + div {
+  margin-top: 1rem;
+}
+
+.modal button {
+  margin-top: 2rem;
+}
+
+.display__heading {
   display: flex;
   justify-content: space-around;
   gap: 20px;
 }
 
-.heading h3 {
+.display__heading h3 {
   width: 100%;
   font-size: 13px;
 }
 
-.heading ~ * {
+.display__heading ~ * {
   flex: 1 1 0px;
+}
+
+.display {
+  margin: 2rem 0;
 }
 
 .display__output__container {
@@ -158,6 +217,9 @@ button {
 .display__output__container select,
 .display__output__container input {
   width: 100%;
+  border: 1px solid #c5c5c5;
+  border-radius: 5px;
+  padding: 0.2rem 0.5rem;
 }
 
 .display__output__container ~ * {
@@ -168,21 +230,27 @@ button {
   margin-top: 0.3rem;
 }
 
-.cal__btns {
-  margin-top: 2rem;
+.display__result {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .display__result__content {
   background: white;
   border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 90%;
+  width: 95%;
   max-width: 740px;
-  margin: 0 auto;
   padding: 2rem;
+}
+
+.display__result__content div {
+  margin: 1rem 0;
+}
+
+.display__result__content div p + p {
+  margin-top: 0.5rem;
 }
 
 .modalResult-bg {
@@ -191,28 +259,15 @@ button {
   height: 100vh;
   top: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
+  background: rgba(0, 0, 0, 0.692);
   justify-content: center;
   align-items: center;
   margin-top: 0;
-
   display: none;
 }
 
-@media screen and (max-width:800px) {
-  main h1 {
-    font-size: 6vw;
+@media (min-width: 500px) {
+  .calc__display {
+    font-size: 1rem;
   }
- 
-}
-@media screen and (max-width: 420px) {
-
- .container {
-    width: 90%;
-  }
-  .third__section{
-    flex-direction: column;
-  }
-
 }
