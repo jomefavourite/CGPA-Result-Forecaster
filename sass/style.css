@@ -1,0 +1,249 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+  max-width: 740px;
+}
+
+body {
+  background: #d7d7db;
+  font-family: "Montserrat";
+  text-align: center;
+}
+
+section {
+  background: #fff;
+  padding: 1rem;
+}
+
+section + section {
+  margin-top: 1rem;
+}
+
+#formError {
+  color: red;
+  font-size: 12px;
+  margin-bottom: 2rem;
+}
+
+.error {
+  display: none;
+  padding: 0.5rem;
+  background: red;
+  color: #fff;
+  margin: 0.5rem 0;
+}
+
+.first__section {
+  border-radius: 10px;
+}
+
+.first__section__heading {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.first__section__heading label {
+  font-size: 13px;
+}
+
+.first__section__heading input {
+  width: 100%;
+  max-width: 20px;
+}
+
+button {
+  padding: 0.4rem 1.2rem;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.third__section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 10px;
+}
+
+.third__section div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.third__section div p {
+  margin-left: 20px;
+}
+
+.third__section div + div {
+  margin-left: 20px;
+}
+
+.result__continue {
+  display: none;
+}
+
+.display__result {
+  display: none;
+}
+
+.modal-bg {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.modal {
+  background: white;
+  border-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 90%;
+  max-width: 1000px;
+  padding: 2rem;
+}
+
+.modal h2 {
+  margin-bottom: 1rem;
+}
+
+.modal div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.heading {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  gap: 20px;
+}
+
+.heading h3 {
+  width: 100%;
+  font-size: 13px;
+}
+
+.heading ~ * {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 0px;
+          flex: 1 1 0px;
+}
+
+.display__output__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 10px;
+}
+
+.display__output__container select,
+.display__output__container input {
+  width: 100%;
+}
+
+.display__output__container ~ * {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 0px;
+          flex: 1 1 0px;
+}
+
+.display__output__container + .display__output__container {
+  margin-top: 0.3rem;
+}
+
+.cal__btns {
+  margin-top: 2rem;
+}
+
+.display__result__content {
+  background: white;
+  border-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 90%;
+  max-width: 740px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.modalResult-bg {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 0;
+}
+/*# sourceMappingURL=style.css.map */

@@ -1,111 +1,111 @@
 // To get a element from html dom
-function call(name) {
-  return document.querySelector(name);
+function call (name) {
+  return document.querySelector(name)
 }
 
 // To get elements from html dom
-function callAll(name) {
-  return document.querySelectorAll(name);
+function callAll (name) {
+  return document.querySelectorAll(name)
 }
 
 // Selecting various elements from the DOM
-const addInputBtn = call(".add");
-const calculateBtn = call(".calculate");
-const addNewSecBtn = call(".addNewSecBtn");
-const addNewSecInp = call(".addNewSecInp");
-const yesBtn = call(".yesBtn");
-const noBtn = call(".noBtn");
-const submitBtn = call(".submitBtn");
-const addInput = call(".numAdd");
-const userName = call("#name");
-const years = call("#years");
-const undo = call(".undo");
-const creditUnits = callAll(".creditUnit");
-const grades = callAll(".grade");
-const courseCodeInputs = callAll(".courseCode");
-let totalUnit = call(".totalUnit");
-let gpaValue = call(".gpaScore");
-const level = call(".level");
-const semester = call(".semester");
-let displayResult = call(".displayResult");
-let displayBg = call(".modalResult-bg");
+const addInputBtn = call('.add')
+const calculateBtn = call('.calculate')
+const addNewSecBtn = call('.addNewSecBtn')
+const addNewSecInp = call('.addNewSecInp')
+const yesBtn = call('.yesBtn')
+const noBtn = call('.noBtn')
+const submitBtn = call('.submitBtn')
+const addInput = call('.numAdd')
+const userName = call('#name')
+const years = call('#years')
+const undo = call('.undo')
+const creditUnits = callAll('.creditUnit')
+const grades = callAll('.grade')
+const courseCodeInputs = callAll('.courseCode')
+let totalUnit = call('.totalUnit')
+let gpaValue = call('.gpaScore')
+const level = call('.level')
+const semester = call('.semester')
+let displayResult = call('.displayResult')
+let displayBg = call('.modalResult-bg')
 
-var levelCount = 1;
-let cgpaArray = [];
-let clickedYesBtn = false;
-let clickedUndoBtn = false;
-let clickedCalcBtn = false;
+var levelCount = 1
+let cgpaArray = []
+let clickedYesBtn = false
+let clickedUndoBtn = false
+let clickedCalcBtn = false
 
-document.addEventListener("keydown", e => {
-  if (e.key === "Enter") addNewInput();
-});
-addInputBtn.addEventListener("click", addNewInput);
-calculateBtn.addEventListener("click", gpaResult);
-yesBtn.addEventListener("click", continueCalculation);
-noBtn.addEventListener("click", stopCalculation);
-submitBtn.addEventListener("click", formSubmit);
-undo.addEventListener("click", undoCgpaArray);
+document.addEventListener('keydown', e => {
+  if (e.key === 'Enter') addNewInput()
+})
+addInputBtn.addEventListener('click', addNewInput)
+calculateBtn.addEventListener('click', gpaResult)
+yesBtn.addEventListener('click', continueCalculation)
+noBtn.addEventListener('click', stopCalculation)
+submitBtn.addEventListener('click', formSubmit)
+undo.addEventListener('click', undoCgpaArray)
 
-function undoCgpaArray() {
-  let newCgpaArr;
+function undoCgpaArray () {
+  let newCgpaArr
   if (!clickedUndoBtn) {
-    addInput.focus();
-    addInput.select();
+    addInput.focus()
+    addInput.select()
 
     grades.forEach(grade => {
-      grade.value = "";
-    });
+      grade.value = ''
+    })
     creditUnits.forEach(creditUnit => {
-      creditUnit.value = "";
-    });
+      creditUnit.value = ''
+    })
     courseCodeInputs.forEach(courseCodeInput => {
-      courseCodeInput.value = "";
-    });
-    totalUnit.innerHTML = 0;
-    gpaValue.innerHTML = 0;
+      courseCodeInput.value = ''
+    })
+    totalUnit.innerHTML = 0
+    gpaValue.innerHTML = 0
 
-    newCgpaArr = cgpaArray.pop();
+    newCgpaArr = cgpaArray.pop()
 
-    clickedUndoBtn = true;
-    clickedCalcBtn = false;
+    clickedUndoBtn = true
+    clickedCalcBtn = false
 
-    console.log(cgpaArray);
-    return newCgpaArr;
+    console.log(cgpaArray)
+    return newCgpaArr
   }
 
-  return newCgpaArr;
+  return newCgpaArr
 }
 
-function continueCalculation() {
+function continueCalculation () {
   if (!clickedYesBtn) {
-    addInput.focus();
-    addInput.select();
+    addInput.focus()
+    addInput.select()
 
     grades.forEach(grade => {
-      grade.value = "";
-    });
+      grade.value = ''
+    })
     creditUnits.forEach(creditUnit => {
-      creditUnit.value = "";
-    });
+      creditUnit.value = ''
+    })
     courseCodeInputs.forEach(courseCodeInput => {
-      courseCodeInput.value = "";
-    });
-    totalUnit.innerHTML = 0;
-    gpaValue.innerHTML = 0;
+      courseCodeInput.value = ''
+    })
+    totalUnit.innerHTML = 0
+    gpaValue.innerHTML = 0
 
-    if (semester.innerHTML === "1st") {
-      semester.innerHTML = "2nd";
+    if (semester.innerHTML === '1st') {
+      semester.innerHTML = '2nd'
     } else {
-      semester.innerHTML = "1st";
-      levelCount++;
+      semester.innerHTML = '1st'
+      levelCount++
     }
 
-    level.innerHTML = levelCount;
+    level.innerHTML = levelCount
 
-    clickedYesBtn = true;
-    clickedCalcBtn = false;
+    clickedYesBtn = true
+    clickedCalcBtn = false
 
-    console.log(clickedYesBtn);
+    console.log(clickedYesBtn)
   }
 }
 
@@ -116,8 +116,8 @@ function continueCalculation() {
 // 1.00-1.49         Pass
 // 0.-0.99           Fail
 
-function stopCalculation() {
-  let firstClass = averageGPA(years.value, 4.5);
+function stopCalculation () {
+  let firstClass = averageGPA(years.value, 4.5)
   let content = `
     <div class="display__result__content">
       <h3>${firstUpper(userName.value)} you're on a ${
@@ -130,7 +130,7 @@ function stopCalculation() {
       <div>
         ${
           firstClass > 4.9
-            ? ""
+            ? ''
             : `<p>You'll need ${firstClass} to end up with a <strong>1st class</strong> for each semesters left</p>`
         }
 
@@ -149,131 +149,131 @@ function stopCalculation() {
       <button class="closeBtn">Close</button>
     </div>
     
-  `;
-  displayBg.style.display = "flex";
-  displayResult.style.display = "flex";
-  displayResult.innerHTML = content;
+  `
+  displayBg.style.display = 'flex'
+  displayResult.style.display = 'flex'
+  displayResult.innerHTML = content
 
-  let closeBtn = call(".closeBtn");
+  let closeBtn = call('.closeBtn')
 
-  closeBtn.addEventListener("click", () => {
-    displayBg.style.display = "none";
-    displayResult.style.display = "none";
-  });
+  closeBtn.addEventListener('click', () => {
+    displayBg.style.display = 'none'
+    displayResult.style.display = 'none'
+  })
 }
 
-function formSubmit(e) {
-  const formError = call("#formError");
-  const modalBg = call(".modal-bg");
-  let messages = [];
+function formSubmit (e) {
+  const formError = call('#formError')
+  const modalBg = call('.modal-bg')
+  let messages = []
 
-  addInput.focus();
-  addInput.select();
-  if (userName.value === "" || userName.value == null) {
-    messages.push("Name is required");
+  addInput.focus()
+  addInput.select()
+  if (userName.value === '' || userName.value == null) {
+    messages.push('Name is required')
   }
 
-  if (years.value === "" || years.value == null) {
-    messages.push("Years of program is required");
+  if (years.value === '' || years.value == null) {
+    messages.push('Years of program is required')
   }
 
   if (messages.length > 0) {
-    formError.innerText = messages.join(", ");
+    formError.innerText = messages.join(', ')
   } else {
-    e.preventDefault();
-    modalBg.style.display = "none";
+    e.preventDefault()
+    modalBg.style.display = 'none'
   }
 }
 
-function firstUpper(name) {
-  return name.charAt(0).toUpperCase() + name.slice(1);
+function firstUpper (name) {
+  return name.charAt(0).toUpperCase() + name.slice(1)
 }
 
 // Function to calculate the gpa score
-function gpaResult() {
-  const creditUnits = callAll(".creditUnit");
-  const grades = callAll(".grade");
-  let totalUnit = call(".totalUnit");
-  let gpaValue = call(".gpaScore");
-  let error = call(".error");
-  let cgpaScore = call(".cgpaScore");
-  let resultContinue = call(".resultContinue");
+function gpaResult () {
+  const creditUnits = callAll('.creditUnit')
+  const grades = callAll('.grade')
+  let totalUnit = call('.totalUnit')
+  let gpaValue = call('.gpaScore')
+  let error = call('.error')
+  let cgpaScore = call('.cgpaScore')
+  let resultContinue = call('.resultContinue')
 
-  let arrCredit = [];
-  let arrGrade = [];
+  let arrCredit = []
+  let arrGrade = []
 
   if (!clickedCalcBtn) {
     creditUnits.forEach(creditUnit => {
-      if (creditUnit.value !== "") {
-        arrCredit.push(Number(creditUnit.value));
+      if (creditUnit.value !== '') {
+        arrCredit.push(Number(creditUnit.value))
       }
-    });
+    })
 
     grades.forEach(grade => {
-      if (grade.value !== "") {
-        arrGrade.push(gradeToPoints(grade.value));
+      if (grade.value !== '') {
+        arrGrade.push(gradeToPoints(grade.value))
       }
-    });
+    })
 
     // From the array - arrCredit, adding all values in the array
     let sumCredit = arrCredit.reduce((a, b) => {
-      return a + b;
-    });
+      return a + b
+    })
 
     // Output is stored as sumGPA
     let sumGPA = arrGrade.reduce((r, a, i) => {
-      return r + a * arrCredit[i];
-    }, 0);
+      return r + a * arrCredit[i]
+    }, 0)
 
     // totalUnit has the total summed credit
-    totalUnit.innerHTML = sumCredit;
+    totalUnit.innerHTML = sumCredit
 
     gpaValue.innerHTML =
-      (sumGPA / sumCredit).toFixed(2) === "NaN"
+      (sumGPA / sumCredit).toFixed(2) === 'NaN'
         ? disErr()
-        : (sumGPA / sumCredit).toFixed(2);
+        : (sumGPA / sumCredit).toFixed(2)
 
-    let scoreValue = (sumGPA / sumCredit).toFixed(2);
+    let scoreValue = (sumGPA / sumCredit).toFixed(2)
 
-    cgpaArray.push(scoreValue);
+    cgpaArray.push(scoreValue)
 
-    cgpaScore.innerHTML = cgpaCal();
+    cgpaScore.innerHTML = cgpaCal()
 
     // creditUnits.forEach(creditUnit => {});
 
-    function disErr() {
+    function disErr () {
       // Error displays immediately
       setTimeout(() => {
-        error.style.display = "block";
-      }, 0);
+        error.style.display = 'block'
+      }, 0)
 
       // at 5s error message disappears
       setTimeout(() => {
-        error.style.display = "none";
-      }, 5000);
+        error.style.display = 'none'
+      }, 5000)
 
-      return 0;
+      return 0
     }
 
-    if ((sumGPA / sumCredit).toFixed(2) !== "NaN") {
-      resultContinue.style.display = "block";
+    if ((sumGPA / sumCredit).toFixed(2) !== 'NaN') {
+      resultContinue.style.display = 'block'
     }
 
-    clickedCalcBtn = true;
+    clickedCalcBtn = true
 
-    clickedYesBtn = false;
-    clickedUndoBtn = false;
+    clickedYesBtn = false
+    clickedUndoBtn = false
   }
 
-  console.log(cgpaArray);
+  console.log(cgpaArray)
 }
 
-function cgpaCal() {
-  let sum = cgpaArray.reduce((a, b) => Number(a) + Number(b));
-  return (sum / cgpaArray.length).toFixed(2);
+function cgpaCal () {
+  let sum = cgpaArray.reduce((a, b) => Number(a) + Number(b))
+  return (sum / cgpaArray.length).toFixed(2)
 }
 
-function averageGPA(years, score) {
+function averageGPA (years, score) {
   // 4.50-5.00         1st Class
   // 3.5-4.49            2nd Class Upper
   // 2.50-3.49          2nd Class Lower
@@ -281,38 +281,38 @@ function averageGPA(years, score) {
   // 1.00-1.49          Pass
   // 0.-0.99            Fail
 
-  let gpaNext;
+  let gpaNext
 
   const extract = cgpaArray.reduce((a, b) => {
-    a.push(score - b);
-    return a;
-  }, []);
-  const extractSum = extract.reduce((a, b) => a + b);
+    a.push(score - b)
+    return a
+  }, [])
+  const extractSum = extract.reduce((a, b) => a + b)
 
-  function getAverage() {
-    let average;
+  function getAverage () {
+    let average
 
-    average = extractSum / (yearsProgram(years) - cgpaArray.length) + score;
+    average = extractSum / (yearsProgram(years) - cgpaArray.length) + score
 
     if (average < 0) {
-      return 0;
+      return 0
     }
 
-    return average.toFixed(2);
+    return average.toFixed(2)
   }
 
-  gpaNext = getAverage();
+  gpaNext = getAverage()
 
-  return gpaNext;
+  return gpaNext
 }
 
 // Function to add new inputs to the pa
-function addNewInput() {
-  const displayOutput = call(".display__output"); // selecting the table body
-  const addInput = call(".numAdd").value; // indicating the number of rows to be added
+function addNewInput () {
+  const displayOutput = call('.display__output') // selecting the table body
+  const addInput = call('.numAdd').value // indicating the number of rows to be added
 
   // A function to add rows which takes a parameter
-  function addRow(num) {
+  function addRow (num) {
     let str = `
       <div class="display__output__container">
         <input type="text" name="courseCode" class="courseCode" placeholder="e.g. Course 1" />
@@ -340,68 +340,78 @@ function addNewInput() {
           <option value="F">F</option>
         </select>
       </div>
-    `;
+    `
 
     // If the parameter is null or there's nothing ""
     // the process should just return the str variable
-    if (num === "") return str;
+    if (num === '') return str
 
     // This is to make the str (string) variable repeat
     // at a certain amount of time based on the argument passed
-    return str.repeat(num);
+    return str.repeat(num)
   }
 
   // Function invoked
-  displayOutput.innerHTML = addRow(addInput);
+  displayOutput.innerHTML = addRow(addInput)
 }
 
 // Grade value to points
-function gradeToPoints(grade) {
+function gradeToPoints (grade) {
   switch (grade) {
-    case "A":
-      return 5;
-      break;
-    case "B":
-      return 4;
-      break;
-    case "C":
-      return 3;
-      break;
-    case "D":
-      return 2;
-      break;
-    case "E":
-      return 1;
-      break;
-    case "F":
-      return 0;
-      break;
+    case 'A':
+      return 5
+      break
+    case 'B':
+      return 4
+      break
+    case 'C':
+      return 3
+      break
+    case 'D':
+      return 2
+      break
+    case 'E':
+      return 1
+      break
+    case 'F':
+      return 0
+      break
     default:
-      return undefined;
+      return undefined
   }
 }
 
-function yearsProgram(years) {
+function yearsProgram (years) {
   switch (years) {
-    case "1":
-      return 2;
-      break;
-    case "2":
-      return 4;
-      break;
-    case "3":
-      return 6;
-      break;
-    case "4":
-      return 8;
-      break;
-    case "5":
-      return 10;
-      break;
-    case "6":
-      return 12;
-      break;
+    case '1':
+      return 2
+      break
+    case '2':
+      return 4
+      break
+    case '3':
+      return 6
+      break
+    case '4':
+      return 8
+      break
+    case '5':
+      return 10
+      break
+    case '6':
+      return 12
+      break
     default:
-      return undefined;
+      return undefined
   }
+}
+
+//register service worker
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker
+      .register('/serviceworker.js')
+      .then(res => console.log('registered'))
+      .catch(err => console.log('not registered', err))
+  })
 }
