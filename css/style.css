@@ -327,6 +327,12 @@ section + section {
   display: none;
 }
 
+footer {
+  margin: auto;
+  font-size: 12px;
+  width: 90%;
+}
+
 @media (min-width: 500px) {
   .calc__display {
     font-size: 1rem;

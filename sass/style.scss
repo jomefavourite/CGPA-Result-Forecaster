@@ -275,4 +275,12 @@ section + section {
   display: none;
 }
 
+footer {
+  // position: absolute;
+  // bottom: 10px;
+  margin: auto;
+  font-size: 12px;
+  width: 90%;
+}
+
 @import "medium";
