@@ -1,26 +1,81 @@
+$br: 10px;
+$red: rgb(238, 56, 56);
+$maxWidth: 740px;
+$shade: #c5c5c5;
+
+@mixin modalStyle() {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.692);
+  justify-content: center;
+  align-items: center;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-$br: 10px;
-
 .container {
   width: 90%;
-  margin: 0 auto;
-  max-width: 740px;
+  margin: 0 auto 2rem;
+  max-width: $maxWidth;
+}
+
+button {
+  padding: 0.4rem 1.2rem;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  background: lighten(#3964fe, 5%);
+  color: #fff;
+  font-weight: 600;
+
+  &:hover {
+    background: lighten(#3964fe, 10%);
+  }
 }
 
 body {
-  background: hsl(240, 5%, 85%);
-  font-family: "Montserrat";
+  font-family: "Open Sans";
   text-align: center;
+  font-size: 15px;
+}
+
+.bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 500px;
+  width: 100%;
+  background: linear-gradient(45deg, #3964fe, #47c3fd);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 80%);
+  z-index: -1000;
+}
+
+.title {
+  color: #fff;
+  margin: 3rem 0 2rem;
+
+  h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    max-width: 470px;
+    margin: 0 auto;
+  }
 }
 
 section {
   background: #fff;
   padding: 1rem;
+  box-shadow: 0 0 10px rgba(128, 128, 128, 0.315);
 }
 
 section + section {
@@ -28,7 +83,7 @@ section + section {
 }
 
 #formError {
-  color: red;
+  color: $red;
   font-size: 12px;
   margin-bottom: 2rem;
 }
@@ -36,13 +91,14 @@ section + section {
 .error {
   display: none;
   padding: 0.5rem;
-  background: red;
+  background: $red;
   color: #fff;
   margin: 0.5rem 0;
+  border-radius: $br;
 }
 
-.first__section {
-  border-radius: 10px;
+.calc__main {
+  border-radius: $br;
 
   &__heading {
     display: flex;
@@ -56,24 +112,20 @@ section + section {
     input {
       // display: block;
       width: 100%;
-      max-width: 20px;
+      max-width: 30px;
+      border-radius: $br - 5px;
+      text-align: center;
+      border: 1px solid $shade;
+      padding: 0.2rem 0.1rem;
     }
   }
 }
 
-button {
-  padding: 0.4rem 1.2rem;
-  border-radius: 20px;
-  border: none;
-  cursor: pointer;
-}
-// .second__section {
-// }
-
-.third__section {
+.calc__display {
   display: flex;
   justify-content: center;
   border-radius: $br;
+  font-size: 12px;
 
   div {
     display: flex;
@@ -91,6 +143,11 @@ button {
 
 .result__continue {
   display: none;
+  border-radius: $br;
+
+  div {
+    margin-top: 1rem;
+  }
 }
 
 .display__result {
@@ -98,27 +155,20 @@ button {
 }
 
 .modal-bg {
-  position: fixed;
-  width: 100%;
-  height: 100vh;
-  top: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.5);
+  @include modalStyle();
   display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .modal {
   background: white;
-  border-radius: 10px;
+  border-radius: $br;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 
   width: 90%;
-  max-width: 1000px;
+  max-width: $maxWidth;
   padding: 2rem;
 
   h2 {
@@ -128,10 +178,30 @@ button {
   div {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+
+    label {
+      text-align: left;
+    }
+
+    input {
+      padding: 0.5rem 0.5rem;
+      border: 1px solid $shade;
+      border-radius: $br - 5px;
+    }
+  }
+
+  div + div {
+    margin-top: 1rem;
+  }
+
+  button {
+    margin-top: 2rem;
   }
 }
 
-.heading {
+.display__heading {
   display: flex;
   justify-content: space-around;
   gap: 20px;
@@ -147,64 +217,62 @@ button {
   }
 }
 
-.display__output {
-  &__container {
-    display: flex;
-    gap: 10px;
+.display {
+  margin: 2rem 0;
+  &__output {
+    &__container {
+      display: flex;
+      gap: 10px;
 
-    select,
-    input {
-      width: 100%;
-      // max-width: 200px;
+      select,
+      input {
+        width: 100%;
+        // max-width: 200px;
+        border: 1px solid $shade;
+        border-radius: $br - 5;
+        padding: 0.2rem 0.5rem;
+      }
+
+      ~ * {
+        // width: 100%;
+        flex: 1 1 0px;
+      }
     }
 
-    ~ * {
-      // width: 100%;
-      flex: 1 1 0px;
+    &__container + &__container {
+      margin-top: 0.3rem;
     }
   }
-
-  &__container + &__container {
-    margin-top: 0.3rem;
-  }
-}
-
-.modal-bg {
-  // display: none;
-}
-
-.cal__btns {
-  margin-top: 2rem;
 }
 
 .display__result {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
   &__content {
     background: white;
     border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
 
-    width: 90%;
-    max-width: 740px;
-    margin: 0 auto;
+    width: 95%;
+    max-width: $maxWidth;
     padding: 2rem;
+
+    div {
+      margin: 1rem 0;
+
+      p + p {
+        margin-top: 0.5rem;
+      }
+    }
   }
 }
 
 .modalResult-bg {
-  position: fixed;
-  width: 100%;
-  height: 100vh;
-  top: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
+  @include modalStyle();
   margin-top: 0;
-
-  // display: none;
+  display: none;
 }
+
+@import "medium";
