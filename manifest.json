@@ -1,0 +1,42 @@
+{
+    "name": "GPA / CGPA Calculator",
+    "short_name" : "CGPA Calculator",
+    "start_url": ".",
+    "background_color": "#5278fe",
+    "theme_color" : "#5d6b9c",
+    "display": "standalone", 
+    "orientation": "portrait",
+    "icons" : [
+        {
+            "src": "images/calculator-logo-72.png",
+            "sizes": "72x72",
+            "type": "image/png"
+        },
+         {
+          "src": "images/calculator-logo-144.png",
+            "sizes": "144x144",
+            "type": "image/png"
+        },
+          {
+          "src": "images/calculator-logo-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+         {
+          "src": "images/calculator-logo-152.png",
+            "sizes": "152x152",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+         {
+          "src": "images/calculator-logo-124.png",
+            "sizes": "124x124",
+            "type": "image/png"
+        },
+         {
+          "src": "images/calculator-logo-96.png",
+            "sizes": "96x96",
+            "type": "image/png"
+        }
+    ]
+}

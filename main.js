@@ -405,3 +405,13 @@ function yearsProgram (years) {
       return undefined
   }
 }
+
+//register service worker
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker
+      .register('/serviceworker.js')
+      .then(res => console.log('registered'))
+      .catch(err => console.log('not registered', err))
+  })
+}
