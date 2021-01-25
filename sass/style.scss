@@ -201,22 +201,6 @@ section + section {
   }
 }
 
-.display__heading {
-  display: flex;
-  justify-content: space-around;
-  gap: 20px;
-
-  h3 {
-    width: 100%;
-    font-size: 13px;
-  }
-
-  ~ * {
-    // width: 100%;
-    flex: 1 1 0px;
-  }
-}
-
 .display {
   margin: 2rem 0;
   &__output {
@@ -227,7 +211,6 @@ section + section {
       select,
       input {
         width: 100%;
-        // max-width: 200px;
         border: 1px solid $shade;
         border-radius: $br - 5;
         padding: 0.2rem 0.5rem;
@@ -241,6 +224,21 @@ section + section {
 
     &__container + &__container {
       margin-top: 0.3rem;
+    }
+  }
+
+  &__heading {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 0.5rem;
+
+    h3 {
+      width: 100%;
+      font-size: 13px;
+    }
+
+    ~ * {
+      flex: 1 1 0px;
     }
   }
 }
@@ -273,6 +271,14 @@ section + section {
   @include modalStyle();
   margin-top: 0;
   display: none;
+}
+
+footer {
+  // position: absolute;
+  // bottom: 10px;
+  margin: auto;
+  font-size: 12px;
+  width: 90%;
 }
 
 @import "medium";
