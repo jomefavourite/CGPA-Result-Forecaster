@@ -319,7 +319,7 @@ box-shadow: 0px $size2 0px $size2
 animation-name: fadeIn;
 animation-duration: 0.6s;
 
-span {
+& .cancelBtn {
   font-size: $size5;
   color: #3964fe;
   background: rgb(233,233,233);
