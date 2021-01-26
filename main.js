@@ -416,7 +416,6 @@ let closeBtn = document.querySelector('.cancelBtn')
 
 helpBtn.addEventListener('click', showModal)
 closeBtn.addEventListener('click', hideModal)
-// window.addEventListener('click', clickOutside)
 
 function showModal () {
   modal.style.display = 'block'
@@ -424,8 +423,4 @@ function showModal () {
 function hideModal () {
   modal.style.display = 'none'
 }
-// function clickOutside (event) {
-//   if (event.target == modal) {
-//     modal.classList.add('hideModal')
-//   }
-// }
+
