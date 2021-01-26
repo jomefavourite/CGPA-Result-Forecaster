@@ -28,7 +28,11 @@ let gpaValue = call(".gpaScore");
 const level = call(".level");
 const semester = call(".semester");
 let displayResult = call(".displayResult");
+let cgpaScore = call(".cgpaScore");
 let displayBg = call(".modalResult-bg");
+let helpBtn = document.querySelector(".help");
+let modal = document.getElementById("modal");
+let closeBtn = document.querySelector(".cancelBtn");
 
 var levelCount = 1;
 let cgpaArray = [];
@@ -45,9 +49,10 @@ yesBtn.addEventListener("click", continueCalculation);
 noBtn.addEventListener("click", stopCalculation);
 submitBtn.addEventListener("click", formSubmit);
 undo.addEventListener("click", undoCgpaArray);
+helpBtn.addEventListener("click", () => (modal.style.display = "block"));
+closeBtn.addEventListener("click", () => (modal.style.display = "none"));
 
 function undoCgpaArray() {
-  // let newCgpaArr;
   if (!clickedUndoBtn) {
     addInput.focus();
     addInput.select();
@@ -116,13 +121,13 @@ function continueCalculation() {
 // 0.-0.99           Fail
 
 function stopCalculation() {
-  let firstClass = averageGPA(years.value, 4.5);
+  let firstClass = averageGPA(years.value, 4.52);
   let content = `
     <div class="display__result__content">
       <h3>${firstUpper(userName.value)} you're on a ${
     years.value
   } years program</h3>
-      <p>${cgpaCal()} is your current CGPA score</p>
+      <p>${cgpaCal(cgpaArray)} is your current CGPA score</p>
 
       <small>Note: The average score is approximated</small>
 
@@ -135,12 +140,12 @@ function stopCalculation() {
 
         <p>You'll need ${averageGPA(
           years.value,
-          3.5
+          3.52
         )} to end up with a <strong>2nd class upper</strong> for each semesters left</p>
 
         <p>You'll need ${averageGPA(
           years.value,
-          2.5
+          2.52
         )} to end up with a <strong>2nd class lower</strong> for each semesters left</p>
         
       </div>
@@ -195,7 +200,7 @@ function gpaResult() {
   let totalUnit = call(".totalUnit");
   let gpaValue = call(".gpaScore");
   let error = call(".error");
-  let cgpaScore = call(".cgpaScore");
+
   let resultContinue = call(".resultContinue");
 
   let arrCredit = [];
@@ -267,9 +272,9 @@ function gpaResult() {
   console.log(cgpaArray);
 }
 
-function cgpaCal(cgpaArray) {
-  let sum = cgpaArray.reduce((a, b) => Number(a) + Number(b));
-  return (sum / cgpaArray.length).toFixed(2);
+function cgpaCal(cgpaArr) {
+  let sum = cgpaArr.reduce((a, b) => Number(a) + Number(b));
+  return (sum / cgpaArr.length).toFixed(2);
 }
 
 function averageGPA(years, score) {
@@ -407,19 +412,3 @@ if ("serviceWorker" in navigator) {
       .catch(err => console.log("not registered", err));
   });
 }
-
-//Modal
-let helpBtn = document.querySelector('.help')
-let modal = document.getElementById('modal')
-let closeBtn = document.querySelector('.cancelBtn')
-
-helpBtn.addEventListener('click', showModal)
-closeBtn.addEventListener('click', hideModal)
-
-function showModal () {
-  modal.style.display = 'block'
-}
-function hideModal () {
-  modal.style.display = 'none'
-}
-
