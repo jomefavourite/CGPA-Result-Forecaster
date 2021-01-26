@@ -47,7 +47,7 @@ submitBtn.addEventListener("click", formSubmit);
 undo.addEventListener("click", undoCgpaArray);
 
 function undoCgpaArray() {
-  let newCgpaArr;
+  // let newCgpaArr;
   if (!clickedUndoBtn) {
     addInput.focus();
     addInput.select();
@@ -64,16 +64,15 @@ function undoCgpaArray() {
     totalUnit.innerHTML = 0;
     gpaValue.innerHTML = 0;
 
-    newCgpaArr = cgpaArray.pop();
+    cgpaArray.pop();
 
     clickedUndoBtn = true;
     clickedCalcBtn = false;
 
-    console.log(cgpaArray);
-    return newCgpaArr;
-  }
+    cgpaScore.innerHTML = cgpaCal(cgpaArray);
 
-  return newCgpaArr;
+    console.log(cgpaArray);
+  }
 }
 
 function continueCalculation() {
@@ -237,7 +236,7 @@ function gpaResult() {
 
     cgpaArray.push(scoreValue);
 
-    cgpaScore.innerHTML = cgpaCal();
+    cgpaScore.innerHTML = cgpaCal(cgpaArray);
 
     // creditUnits.forEach(creditUnit => {});
 
@@ -268,7 +267,7 @@ function gpaResult() {
   console.log(cgpaArray);
 }
 
-function cgpaCal() {
+function cgpaCal(cgpaArray) {
   let sum = cgpaArray.reduce((a, b) => Number(a) + Number(b));
   return (sum / cgpaArray.length).toFixed(2);
 }
