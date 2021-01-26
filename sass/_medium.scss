@@ -1,5 +1,6 @@
 $medium: 500px;
 
+
 @mixin medium() {
   @media (min-width: #{$medium}) {
     @content;
