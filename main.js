@@ -408,3 +408,24 @@ if ("serviceWorker" in navigator) {
       .catch(err => console.log("not registered", err));
   });
 }
+
+//Modal
+let helpBtn = document.querySelector('.help')
+let modal = document.getElementById('modal')
+let closeBtn = document.querySelector('.cancelBtn')
+
+helpBtn.addEventListener('click', showModal)
+closeBtn.addEventListener('click', hideModal)
+// window.addEventListener('click', clickOutside)
+
+function showModal () {
+  modal.style.display = 'block'
+}
+function hideModal () {
+  modal.style.display = 'none'
+}
+// function clickOutside (event) {
+//   if (event.target == modal) {
+//     modal.classList.add('hideModal')
+//   }
+// }
