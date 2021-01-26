@@ -20,7 +20,7 @@
   margin: 0;
   padding: 0;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .container {
@@ -57,7 +57,7 @@ body {
   width: 100%;
   background: linear-gradient(45deg, #3964fe, #47c3fd);
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 80%);
-          clip-path: polygon(0 0, 100% 0, 100% 100%, 0 80%);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 80%);
   z-index: -1000;
 }
 
@@ -84,7 +84,7 @@ section {
   background: #fff;
   padding: 1rem;
   -webkit-box-shadow: 0 0 10px rgba(128, 128, 128, 0.315);
-          box-shadow: 0 0 10px rgba(128, 128, 128, 0.315);
+  box-shadow: 0 0 10px rgba(128, 128, 128, 0.315);
 }
 
 section + section {
@@ -115,12 +115,12 @@ section + section {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 .calc__main__heading label {
@@ -141,8 +141,8 @@ section + section {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   border-radius: 10px;
   font-size: 12px;
 }
@@ -152,8 +152,8 @@ section + section {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .calc__display div p {
@@ -185,11 +185,11 @@ section + section {
   left: 0;
   background: rgba(0, 0, 0, 0.692);
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -202,15 +202,15 @@ section + section {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   width: 90%;
   max-width: 740px;
   padding: 2rem;
@@ -225,11 +225,11 @@ section + section {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   gap: 20px;
 }
 
@@ -272,8 +272,8 @@ section + section {
 
 .display__output__container ~ * {
   -webkit-box-flex: 1;
-      -ms-flex: 1 1 0px;
-          flex: 1 1 0px;
+  -ms-flex: 1 1 0px;
+  flex: 1 1 0px;
 }
 
 .display__output__container + .display__output__container {
@@ -285,7 +285,7 @@ section + section {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: distribute;
-      justify-content: space-around;
+  justify-content: space-around;
   margin-bottom: 0.5rem;
 }
 
@@ -296,8 +296,8 @@ section + section {
 
 .display__heading ~ * {
   -webkit-box-flex: 1;
-      -ms-flex: 1 1 0px;
-          flex: 1 1 0px;
+  -ms-flex: 1 1 0px;
+  flex: 1 1 0px;
 }
 
 .display__result {
@@ -305,15 +305,15 @@ section + section {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 .display__result__content {
@@ -340,11 +340,11 @@ section + section {
   left: 0;
   background: rgba(0, 0, 0, 0.692);
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   margin-top: 0;
   display: none;
 }
@@ -354,15 +354,15 @@ section + section {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   display: none;
   top: 0;
 }
@@ -379,23 +379,23 @@ section + section {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   border-radius: 5px;
   overflow-y: scroll;
   -webkit-box-shadow: 0px 10px 0px 10px rgba(211, 211, 211, 0.5);
-          box-shadow: 0px 10px 0px 10px rgba(211, 211, 211, 0.5);
+  box-shadow: 0px 10px 0px 10px rgba(211, 211, 211, 0.5);
   -webkit-animation-name: fadeIn;
-          animation-name: fadeIn;
+  animation-name: fadeIn;
   -webkit-animation-duration: 0.6s;
-          animation-duration: 0.6s;
+  animation-duration: 0.6s;
 }
 
 #modal .guide-modal .cancelBtn {
@@ -426,7 +426,7 @@ section + section {
 
 #modal .guide-modal .modal__content ul li b {
   font-size: 20px;
-  opacity: .3;
+  opacity: 0.3;
 }
 
 #modal .modal__content h2 span {
