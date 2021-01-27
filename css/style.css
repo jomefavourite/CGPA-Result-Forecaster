@@ -199,7 +199,6 @@ section + section {
 
 .display__output__container {
   display: flex;
-  gap: 10px;
 }
 
 .display__output__container select,
@@ -208,6 +207,10 @@ section + section {
   border: 1px solid #c5c5c5;
   border-radius: 5px;
   padding: 0.2rem 0.5rem;
+}
+
+.display__output__container * + * {
+  margin-left: 10px;
 }
 
 .display__output__container ~ * {

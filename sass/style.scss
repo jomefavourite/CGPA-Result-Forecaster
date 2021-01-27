@@ -147,7 +147,6 @@ section + section {
   &__output {
     &__container {
       display: flex;
-      gap: 10px;
 
       select,
       input {
@@ -155,6 +154,10 @@ section + section {
         border: 1px solid $shade;
         border-radius: $br - 5;
         padding: 0.2rem 0.5rem;
+      }
+
+      * + * {
+        margin-left: 10px;
       }
 
       ~ * {
