@@ -1,6 +1,6 @@
-# CGPA Result Calculator
+# CGPA Result Forecaster
 
-## How to use CGPA Calculator
+## How to use CGPA Result Forecaster
 
 - Add the number of columns you want (i.e. the
   number of courses you want to calculate for) by clicking on
