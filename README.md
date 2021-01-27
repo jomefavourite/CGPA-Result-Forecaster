@@ -23,5 +23,5 @@
 
 - If you want to calculate your GPA/CGPA for
   another semester, simply click on <kbd>Yes</kbd>, else
-  click on <kbd>No</kbd> to display your average score to
+  click on <kbd>No - Forecast Score</kbd> to display your average score to
   end up with a 1st, 2nd upper/lower class.
