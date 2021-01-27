@@ -1,4 +1,4 @@
-const staticApp = "CGPA-calculator-v1";
+const staticApp = "CGPA_Result_Forecaster-v1";
 
 //cache the assets that will be needed offline
 const assets = [

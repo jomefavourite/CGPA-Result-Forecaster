@@ -1,6 +1,6 @@
 {
-    "name": "GPA / CGPA Calculator",
-    "short_name" : "CGPA Calculator",
+    "name": "CGPA Result Forecaster",
+    "short_name" : "CGPA Result Forecaster",
     "start_url": ".",
     "background_color": "#e0e6fc",
     "theme_color" : "#5d6b9c",
