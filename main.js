@@ -52,6 +52,7 @@ undo.addEventListener("click", undoCgpaArray);
 helpBtn.addEventListener("click", () => (modal.style.display = "block"));
 closeBtn.addEventListener("click", () => (modal.style.display = "none"));
 
+// When Undo button is clicked, pop last item from array
 function undoCgpaArray() {
   if (!clickedUndoBtn) {
     addInput.focus();
@@ -80,6 +81,7 @@ function undoCgpaArray() {
   }
 }
 
+// Calculate for the next semester
 function continueCalculation() {
   if (!clickedYesBtn) {
     addInput.focus();
@@ -120,6 +122,7 @@ function continueCalculation() {
 // 1.00-1.49         Pass
 // 0.-0.99           Fail
 
+// Forecast Result when no button is clicked
 function stopCalculation() {
   let firstClass = averageGPA(years.value, 4.52);
   let content = `
@@ -129,24 +132,24 @@ function stopCalculation() {
   } years program</h3>
       <p>${cgpaCal(cgpaArray)} is your current CGPA score</p>
 
-      <small>Note: The average score is approximated</small>
+      <small><em>Note: The average score is approximated</em></small>
 
       <div>
         ${
           firstClass > 4.9
             ? ""
-            : `<p>You'll need ${firstClass} to end up with a <strong>1st class</strong> for each semesters left</p>`
+            : `<p>You'll need <strong>${firstClass}</strong> to remain at <strong>1st class</strong> for each semesters left</p>`
         }
 
-        <p>You'll need ${averageGPA(
+        <p>You'll need <strong>${averageGPA(
           years.value,
           3.52
-        )} to end up with a <strong>2nd class upper</strong> for each semesters left</p>
+        )}</strong> to remain at with a <strong>2nd class upper</strong> for each semesters left</p>
 
-        <p>You'll need ${averageGPA(
+        <p>You'll need <strong>${averageGPA(
           years.value,
           2.52
-        )} to end up with a <strong>2nd class lower</strong> for each semesters left</p>
+        )}</strong> to remain at with a <strong>2nd class lower</strong> for each semesters left</p>
         
       </div>
 
@@ -166,6 +169,7 @@ function stopCalculation() {
   });
 }
 
+// When form is submitted
 function formSubmit(e) {
   const formError = call("#formError");
   const modalBg = call(".modal-bg");
@@ -189,6 +193,7 @@ function formSubmit(e) {
   }
 }
 
+// Make name first Letter uppercase
 function firstUpper(name) {
   return name.charAt(0).toUpperCase() + name.slice(1);
 }
@@ -269,14 +274,16 @@ function gpaResult() {
     clickedUndoBtn = false;
   }
 
-  console.log(cgpaArray);
+  // console.log(cgpaArray);
 }
 
+// Calculate the cgpa
 function cgpaCal(cgpaArr) {
   let sum = cgpaArr.reduce((a, b) => Number(a) + Number(b));
   return (sum / cgpaArr.length).toFixed(2);
 }
 
+// Calculate the average score
 function averageGPA(years, score) {
   let gpaNext;
 
@@ -303,7 +310,7 @@ function averageGPA(years, score) {
   return gpaNext;
 }
 
-// Function to add new inputs to the pa
+// Function to add new inputs to the page
 function addNewInput() {
   const displayOutput = call(".display__output"); // selecting the table body
   const addInput = call(".numAdd").value; // indicating the number of rows to be added
