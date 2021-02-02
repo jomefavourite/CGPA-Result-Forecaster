@@ -6,6 +6,8 @@ This project is for Hashnode Vercel Hackathon
 
 The CGPA Result Forecaster calculates your GPA and CGPA score, then from your current score forecast the average estimate score to end up with a 1st, 2nd upper/lower class.
 
+> Read how the project was built: 
+
 ## How to use CGPA Result Forecaster
 
 - Add the number of columns you want (i.e. the
