@@ -34,4 +34,10 @@ The CGPA Result Forecaster calculates your GPA and CGPA score, then from your cu
 
 ## Preview
 
-![project gif](https://jomefavourite.github.io/Images/project.gif)
+![project 1 image](https://jomefavourite.github.io/Images/project1.png)
+
+![project 2 image](https://jomefavourite.github.io/Images/project2.png)
+
+![project 3 image](https://jomefavourite.github.io/Images/project3.png)
+
+![project 4 image](https://jomefavourite.github.io/Images/project4.png)

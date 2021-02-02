@@ -130,7 +130,7 @@ function stopCalculation() {
       <h3>${firstUpper(userName.value)} you're on a ${
     years.value
   } years program</h3>
-      <p>${cgpaCal(cgpaArray)} is your current CGPA score</p>
+      <p><strong>${cgpaCal(cgpaArray)}</strong> is your current CGPA score</p>
 
       <small><em>Note: The average score is approximated</em></small>
 
