@@ -100,7 +100,7 @@ section + section {
 
 .calc__main__heading input {
   width: 100%;
-  max-width: 30px;
+  max-width: 40px;
   border-radius: 5px;
   text-align: center;
   border: 1px solid #c5c5c5;
