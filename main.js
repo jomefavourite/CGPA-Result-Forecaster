@@ -138,18 +138,18 @@ function stopCalculation() {
         ${
           firstClass > 4.9
             ? ""
-            : `<p>You'll need <strong>${firstClass}</strong> to remain at <strong>1st class</strong> for each semesters left</p>`
+            : `<p>You'll need <strong>${firstClass}</strong> to remain at <strong>1st class</strong> for each of the semesters left</p>`
         }
 
         <p>You'll need <strong>${averageGPA(
           years.value,
           3.52
-        )}</strong> to remain at with a <strong>2nd class upper</strong> for each semesters left</p>
+        )}</strong> to remain at with a <strong>2nd class upper</strong> for each of the semesters left</p>
 
         <p>You'll need <strong>${averageGPA(
           years.value,
           2.52
-        )}</strong> to remain at with a <strong>2nd class lower</strong> for each semesters left</p>
+        )}</strong> to remain at with a <strong>2nd class lower</strong> for each of the semesters left</p>
         
       </div>
 
