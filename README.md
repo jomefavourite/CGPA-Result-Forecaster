@@ -1,6 +1,6 @@
 # CGPA Result Forecaster
 
-This project is for Hashnode Vercel Hackathon
+This project was made for Hashnode Vercel Hackathon
 
 ## What it does
 
